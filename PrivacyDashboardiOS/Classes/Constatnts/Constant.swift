@@ -17,7 +17,7 @@ struct Constant {
         if let resourceBundle = Bundle(url: bundleURL!) {
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
         } else {
-            let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
+            let myBundle = Bundle(for: PDOrganisationViewController.self)
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
         }
         return storyboard
@@ -160,11 +160,11 @@ struct Constant {
     }
     
     struct URLStrings {
-        static let createIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual"
-        static let readIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
-        static let updateIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
-        static let fetchAllIndividuals = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individuals"
-        static let fetchDataAgreementRecord =  BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/record/data-agreement/"
-        static let fetchDataAgreement = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/data-agreement/"
+        static let createIndividual = PrivacyDashboardiOS.shared.baseUrl + "/service/individual"
+        static let readIndividual = PrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
+        static let updateIndividual = PrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
+        static let fetchAllIndividuals = PrivacyDashboardiOS.shared.baseUrl + "/service/individuals"
+        static let fetchDataAgreementRecord =  PrivacyDashboardiOS.shared.baseUrl + "/service/individual/record/data-agreement/"
+        static let fetchDataAgreement = PrivacyDashboardiOS.shared.baseUrl + "/service/data-agreement/"
     }
 }

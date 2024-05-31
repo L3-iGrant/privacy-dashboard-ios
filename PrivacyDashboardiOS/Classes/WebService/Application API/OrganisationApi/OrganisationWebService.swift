@@ -14,7 +14,7 @@ enum RequestType {
     case ForgetMe
 }
 
-class OrganisationWebService: BBConsentBaseWebService {
+class OrganisationWebService: PDBaseWebService {
     
     func nonAddedOrganisationList(){
         self.url = baseUrl + "GetOrgsToSubscribe"
@@ -56,7 +56,7 @@ class OrganisationWebService: BBConsentBaseWebService {
 //        if  UserInfo.currentUser()?.userID != nil{
 //            userId =  (UserInfo.currentUser()?.userID)!
 //        }
-        let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+        let userID = PrivacyDashboardiOS.shared.userId ?? ""
         self.url = baseUrl + "organizations/" + orgId + "/users"
         self.parameters = ["UserID": userID as AnyObject, "SubscribeKey" : subKey ?? ""] as [String : AnyObject]
         postServiceCall()
@@ -72,7 +72,7 @@ class OrganisationWebService: BBConsentBaseWebService {
 //        if  UserInfo.currentUser()?.userID != nil{
 //            userId =  (UserInfo.currentUser()?.userID)!
 //        }
-        let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+        let userID = PrivacyDashboardiOS.shared.userId ?? ""
         self.url = baseUrl + "organizations/" + orgId + "/users/" + userID
         deleteServiceCall()
     }
@@ -82,7 +82,7 @@ class OrganisationWebService: BBConsentBaseWebService {
 //        if  UserInfo.currentUser()?.userID != nil{
 //            userId =  (UserInfo.currentUser()?.userID)!
 //        }
-        let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+        let userID = PrivacyDashboardiOS.shared.userId ?? ""
         self.url = baseUrl + "UpdateAllConsents/" + userID + "?orgID=" + orgId + "&consented=Disallow"
         postServiceCall()
     }
@@ -92,7 +92,7 @@ class OrganisationWebService: BBConsentBaseWebService {
 //        if  UserInfo.currentUser()?.userID != nil{
 //            userId =  (UserInfo.currentUser()?.userID)!
 //        }
-        let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+        let userID = PrivacyDashboardiOS.shared.userId ?? ""
         let urlString = baseUrl + "organizations/" + "search?name=" + input
         if typeId != nil{
             let orgTypeID : String = typeId!
@@ -109,7 +109,7 @@ class OrganisationWebService: BBConsentBaseWebService {
 //        if  UserInfo.currentUser()?.userID != nil{
 //            userId =  (UserInfo.currentUser()?.userID)!
 //        }
-        let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+        let userID = PrivacyDashboardiOS.shared.userId ?? ""
         self.url = baseUrl + "organizations/" + orgId + "/users/" + userID + "/consents/" + consentID
         self.parameters = parameter
         self.parameters.updateValue(consentID as AnyObject, forKey: "consentID")

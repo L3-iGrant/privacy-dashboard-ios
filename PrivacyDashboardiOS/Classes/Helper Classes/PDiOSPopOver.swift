@@ -1,5 +1,5 @@
 //
-//  BBConsentPopOver.swift
+//  PrivacyDashboardiOSPopOver.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 06/09/23.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public enum BBConsentPopOverOption {
+public enum PrivacyDashboardiOSPopOverOption {
   case arrowSize(CGSize)
   case animationIn(TimeInterval)
   case animationOut(TimeInterval)
@@ -30,7 +30,7 @@ public enum BBConsentPopOverOption {
   case auto
 }
 
-open class BBConsentPopOver: UIView {
+open class PDiOSPopOver: UIView {
 
   // custom property
   open var arrowSize: CGSize = CGSize(width: 16.0, height: 10.0)
@@ -76,7 +76,7 @@ open class BBConsentPopOver: UIView {
     self.accessibilityViewIsModal = true
   }
 
-  public init(options: [BBConsentPopOverOption]?, showHandler: (() -> ())? = nil, dismissHandler: (() -> ())? = nil) {
+  public init(options: [PrivacyDashboardiOSPopOverOption]?, showHandler: (() -> ())? = nil, dismissHandler: (() -> ())? = nil) {
     super.init(frame: .zero)
     self.backgroundColor = .clear
     self.setOptions(options)
@@ -177,7 +177,7 @@ open class BBConsentPopOver: UIView {
       }
 
       if self.dismissOnBlackOverlayTap {
-        self.blackOverlay.addTarget(self, action: #selector(BBConsentPopOver.dismiss), for: .touchUpInside)
+        self.blackOverlay.addTarget(self, action: #selector(PDiOSPopOver.dismiss), for: .touchUpInside)
       }
     }
     
@@ -342,9 +342,9 @@ open class BBConsentPopOver: UIView {
   }
 }
 
-private extension BBConsentPopOver {
+private extension PDiOSPopOver {
 
-  func setOptions(_ options: [BBConsentPopOverOption]?){
+  func setOptions(_ options: [PrivacyDashboardiOSPopOverOption]?){
     if let options = options {
       for option in options {
         switch option {

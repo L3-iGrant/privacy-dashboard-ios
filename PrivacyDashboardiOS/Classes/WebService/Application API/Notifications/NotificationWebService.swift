@@ -9,7 +9,7 @@
 
 import UIKit
 
-class NotificationWebService: BBConsentBaseWebService {
+class NotificationWebService: PDBaseWebService {
 
 //    func notificationsList(){
 //        self.url = baseUrl + "user/notifications"

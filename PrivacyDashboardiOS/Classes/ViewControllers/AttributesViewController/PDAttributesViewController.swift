@@ -1,5 +1,5 @@
 //
-//  BBConsentAttributesViewController.swift
+//  PDAttributesViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 08/09/23.
@@ -8,7 +8,7 @@
 import UIKit
 import ExpandableLabel
 
-class BBConsentAttributesViewController: BBConsentBaseViewController {
+class PDAttributesViewController: PDBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var disAllowAllBtn: UIButton!
     @IBOutlet  var disAllowAllBtnHeightCostrint: NSLayoutConstraint!
@@ -59,7 +59,7 @@ class BBConsentAttributesViewController: BBConsentBaseViewController {
     func addRefershNotification() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
-                                       selector: #selector(BBConsentAttributesViewController.consentValueModified),
+                                       selector: #selector(PDAttributesViewController.consentValueModified),
                                        name: .consentChange,
                                        object: nil)
     }
@@ -93,7 +93,7 @@ class BBConsentAttributesViewController: BBConsentBaseViewController {
     @IBAction func policyBtnClicked() {
         if let url = dataAgreementsModel?.dataAgreements[0].policy.url {
             if url.isValidString{
-                let webviewVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.webViewVC) as! BBConsentWebViewViewController
+                let webviewVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.webViewVC) as! PDWebViewViewController
                 webviewVC.urlString = url
                 self.navigationController?.pushViewController(webviewVC, animated: true)
             }else{
@@ -133,7 +133,7 @@ class BBConsentAttributesViewController: BBConsentBaseViewController {
     }
 }
 
-extension BBConsentAttributesViewController: WebServiceTaskManagerProtocol {
+extension PDAttributesViewController: WebServiceTaskManagerProtocol {
     
     func didFinishTask(from manager:AnyObject, response:(data:RestResponse?,error:String?)){
         self.removeLoadingIndicator()
@@ -165,7 +165,7 @@ extension BBConsentAttributesViewController: WebServiceTaskManagerProtocol {
     }
 }
 
-extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDataSource {
+extension  PDAttributesViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataAttributes == nil {
@@ -197,7 +197,7 @@ extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDa
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                let orgOverViewCell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.KOrgDetailedOverViewCellID, for: indexPath) as! BBConsentDashBoardOverviewCell
+                let orgOverViewCell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.KOrgDetailedOverViewCellID, for: indexPath) as! PDDashBoardOverviewCell
                 //    orgOverViewCell.overViewLbl.text = organisaionDeatils?.organization?.descriptionField
                 
                 orgOverViewCell.overViewLbl.delegate = self
@@ -221,7 +221,7 @@ extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDa
                 }
                 return orgOverViewCell
             default:
-                let consentHeaderCell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.consentHeaderTableViewCell,for: indexPath) as! BBConsentAttributesHeaderCell
+                let consentHeaderCell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.consentHeaderTableViewCell,for: indexPath) as! PDAttributesHeaderCell
                 
                 if let url = dataAgreementsModel?.dataAgreements[0].policy.url {
                     if url.isValidString{
@@ -242,8 +242,8 @@ extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDa
             }
         }
                 
-        let consentCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.consentCell ,for: indexPath) as! BBConsentAttributeTableViewCell
-        consentCell.rightArrow.isHidden = BBConsentPrivacyDashboardiOS.shared.turnOnAttributeDetailScreen == true ? false : true
+        let consentCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.consentCell ,for: indexPath) as! PDAttributeTableViewCell
+        consentCell.rightArrow.isHidden = PrivacyDashboardiOS.shared.turnOnAttributeDetailScreen == true ? false : true
         consentCell.consentInfo = dataAttributes?[indexPath.row]
         consentCell.consent = consentVal
         consentCell.showData()
@@ -255,9 +255,9 @@ extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDa
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && BBConsentPrivacyDashboardiOS.shared.turnOnAttributeDetailScreen {
+        if indexPath.section == 1 && PrivacyDashboardiOS.shared.turnOnAttributeDetailScreen {
             if self.consentslistInfo?.consents?.purpose?.lawfulUsage == false && !isFromQR {
-                let consentVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.consentVC) as! BBConsentAttributesDetailViewController
+                let consentVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.consentVC) as! PDAttributesDetailViewController
                 consentVC.consent = consentslist?[indexPath.row]
                 consentVC.orgID = self.consentslistInfo?.orgID
                 consentVC.purposeDetails = self.consentslistInfo
@@ -268,7 +268,7 @@ extension  BBConsentAttributesViewController : UITableViewDelegate,UITableViewDa
     }
 }
 
-extension BBConsentAttributesViewController: ExpandableLabelDelegate {
+extension PDAttributesViewController: ExpandableLabelDelegate {
     func willExpandLabel(_ label: ExpandableLabel) {
         overViewCollpased = false
         tableView.reloadData()

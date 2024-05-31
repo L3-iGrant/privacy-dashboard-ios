@@ -1,5 +1,5 @@
 //
-//  BBUtilityMethods.swift
+//  PrivacyDashboardiOSUtilityMethods.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 06/09/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BBConsentUtilityMethods: NSObject {
+class PDiOSUtilityMethods: NSObject {
 
     class func setView(view: UIView, hidden: Bool) {
         UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {

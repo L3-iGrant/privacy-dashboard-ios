@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController: BBConsentBaseViewController, WKNavigationDelegate, WKUIDelegate {
+class WebViewViewController: PDBaseViewController, WKNavigationDelegate, WKUIDelegate {
     @IBOutlet weak var webview : WKWebView!
     var urlString  = ""
 

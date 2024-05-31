@@ -1,5 +1,5 @@
 //
-//  BBConsentDownloadDataProgressViewController.swift
+//  PDDownloadDataProgressViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 19/09/23.
@@ -8,7 +8,7 @@
 import UIKit
 import StepProgressView
 
-class BBConsentDownloadDataProgressViewController: BBConsentBaseViewController {
+class PDDownloadDataProgressViewController: PDBaseViewController {
     @IBOutlet weak var stepView: StepProgressView!
     var requestStatus: RequestStatus?
     var organisationId: String?
@@ -93,7 +93,7 @@ class BBConsentDownloadDataProgressViewController: BBConsentBaseViewController {
         serviceManager.cancelRequest(orgId: self.organisationId ?? "", requestId: self.requestStatus?.iD ?? "", type: self.requestType ?? RequestType.DownloadData)
     }
 }
-extension BBConsentDownloadDataProgressViewController: WebServiceTaskManagerProtocol {
+extension PDDownloadDataProgressViewController: WebServiceTaskManagerProtocol {
     func didFinishTask(from manager:AnyObject, response:(data:RestResponse?,error:String?)) {
         self.removeLoadingIndicator()
         if response.error != nil{

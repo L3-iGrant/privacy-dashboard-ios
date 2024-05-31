@@ -1,5 +1,5 @@
 //
-//  BBConsentRequestStatusViewController.swift
+//  PDStatusViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 18/09/23.
@@ -8,7 +8,7 @@
 import SDStateTableView
 import UIKit
 
-class BBConsentRequestStatusViewController: BBConsentBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class PDStatusViewController: PDBaseViewController, UITableViewDataSource, UITableViewDelegate {
     var orgId: String?
     var histories: [RequestStatus]?
     @IBOutlet var historyListTable: SDStateTableView!
@@ -80,7 +80,7 @@ class BBConsentRequestStatusViewController: BBConsentBaseViewController, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.KRequestedStatusCellID, for: indexPath) as! BBConsentRequestStatusTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CustomTabelCell.KRequestedStatusCellID, for: indexPath) as! PDRequestStatusTableViewCell
         cell.statusType.text = histories?[indexPath.row].TypeStr
         cell.showDate(dateval: histories?[indexPath.row].RequestedDate ?? "")
         cell.statusDetail.text = histories?[indexPath.row].StateStr
@@ -127,7 +127,7 @@ class BBConsentRequestStatusViewController: BBConsentBaseViewController, UITable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! BBConsentDownloadDataProgressViewController
+        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! PDDownloadDataProgressViewController
         downloadDataProgressVC.organisationId = orgId
         downloadDataProgressVC.requestStatus = histories?[indexPath.row]
         downloadDataProgressVC.fromHistory = true
@@ -162,7 +162,7 @@ class BBConsentRequestStatusViewController: BBConsentBaseViewController, UITable
     }
 }
 
-extension BBConsentRequestStatusViewController: WebServiceTaskManagerProtocol {
+extension PDStatusViewController: WebServiceTaskManagerProtocol {
     func didFinishTask(from manager: AnyObject, response: (data: RestResponse?, error: String?)) {
         removeLoadingIndicator()
         if response.error != nil {
@@ -189,14 +189,14 @@ extension BBConsentRequestStatusViewController: WebServiceTaskManagerProtocol {
                     self.historyListTable.reloadData()
                 }
             } else if serviceManager.serviceType == .requestDownloadData {
-                let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! BBConsentDownloadDataProgressViewController
+                let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! PDDownloadDataProgressViewController
                 downloadDataProgressVC.organisationId = orgId ?? ""
                 downloadDataProgressVC.requestType = RequestType.DownloadData
                 self.histories?.removeAll()
                 self.callHistoryListApi()
                 navigationController?.pushViewController(downloadDataProgressVC, animated: true)
             } else if serviceManager.serviceType == .requestForgetMe {
-                let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! BBConsentDownloadDataProgressViewController
+                let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! PDDownloadDataProgressViewController
                 downloadDataProgressVC.organisationId = orgId ?? ""
                 downloadDataProgressVC.requestType = RequestType.ForgetMe
                 self.histories?.removeAll()
@@ -205,7 +205,7 @@ extension BBConsentRequestStatusViewController: WebServiceTaskManagerProtocol {
             } else if serviceManager.serviceType == .getDownloadDataStatus {
                 if let data = response.data?.responseModel as? RequestStatus {
                     if data.RequestOngoing ?? false {
-                        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! BBConsentDownloadDataProgressViewController
+                        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! PDDownloadDataProgressViewController
                         downloadDataProgressVC.organisationId = orgId ?? ""
                         downloadDataProgressVC.requestType = RequestType.DownloadData
                         downloadDataProgressVC.requestStatus = data
@@ -217,7 +217,7 @@ extension BBConsentRequestStatusViewController: WebServiceTaskManagerProtocol {
             } else if serviceManager.serviceType == .getForgetMeStatus {
                 if let data = response.data?.responseModel as? RequestStatus {
                     if data.RequestOngoing ?? false {
-                        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! BBConsentDownloadDataProgressViewController
+                        let downloadDataProgressVC = storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.downloadDataProgressVC) as! PDDownloadDataProgressViewController
                         downloadDataProgressVC.organisationId = orgId ?? ""
                         downloadDataProgressVC.requestType = RequestType.ForgetMe
                         downloadDataProgressVC.requestStatus = data

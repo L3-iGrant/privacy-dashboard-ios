@@ -1,5 +1,5 @@
 //
-//  RequestStatusTableViewCell.swift
+//  PDRequestStatusTableViewCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 19/09/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BBConsentRequestStatusTableViewCell: UITableViewCell {
+class PDRequestStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var statusType: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var statusDetail: UILabel!

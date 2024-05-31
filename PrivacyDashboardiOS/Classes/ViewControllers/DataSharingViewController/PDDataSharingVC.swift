@@ -1,5 +1,5 @@
 //
-//  BBConsentDataSharingVC.swift
+//  PDDataSharingVC.swift
 //  AFDateHelper
 //
 //  Created by Mumthasir mohammed on 09/11/23.
@@ -8,7 +8,7 @@
 import Foundation
 import Kingfisher
 
-class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManagerProtocol, UITextViewDelegate {
+class PDDataSharingVC: PDBaseViewController, WebServiceTaskManagerProtocol, UITextViewDelegate {
     // MARK: IBOutlets
     @IBOutlet weak var authoriseButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -67,17 +67,17 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
         let modifier = AnyModifier { request in
             var r = request
             r.setValue("Bearer \(UserInfo.currentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
-            if let tokendata = BBConsentKeyChainUtils.load(key: "BBConsentApiKey") {
+            if let tokendata = PDiOSKeyChainUtils.load(key: "BBConsentApiKey") {
                 let token = String(data: tokendata, encoding: .utf8) ?? ""
                 r.setValue("ApiKey \(token)", forHTTPHeaderField: "Authorization")
-                r.setValue(BBConsentPrivacyDashboardiOS.shared.userId ?? "", forHTTPHeaderField:  "X-ConsentBB-IndividualId")
+                r.setValue(PrivacyDashboardiOS.shared.userId ?? "", forHTTPHeaderField:  "X-ConsentBB-IndividualId")
             }
             return r
         }
         
         self.betweenLogosImageView.image = UIImage(named: "ic_between_logo", in: Bundle(for: type(of:self)), compatibleWith: nil)
         let logoUrlFromOrgData = URL(string: (organizationData?.logoImageURL ?? ""))
-        let placeholder = UIImage(named: Constant.Images.iGrantTick, in: Constant.getResourcesBundle(vc: BBConsentBaseViewController().classForCoder), compatibleWith: nil)
+        let placeholder = UIImage(named: Constant.Images.iGrantTick, in: Constant.getResourcesBundle(vc: PDBaseViewController().classForCoder), compatibleWith: nil)
         if let logoUrlFromClient = URL(string: theirLogoImageUrl ?? "") {
             self.thierLogoImageView.kf.setImage(with: logoUrlFromClient, placeholder: placeholder, options: [.requestModifier(modifier)])
         }
@@ -155,7 +155,7 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
     // MARK: API Calls
     func createRecordApiCall() {
         self.addLoadingIndicator()
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + (dataAgreementId ?? ""), parameters: [:], method: .post) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + (dataAgreementId ?? ""), parameters: [:], method: .post) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 self.sendDataBack?(resultVal)
@@ -180,7 +180,7 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
     func callOrganisationDetailsApi(){
         let serviceManager = OrganisationWebServiceManager()
         serviceManager.managerDelegate = self
-        serviceManager.getOrganisationDetails(orgId: BBConsentPrivacyDashboardiOS.shared.orgId ?? "")
+        serviceManager.getOrganisationDetails(orgId: PrivacyDashboardiOS.shared.orgId ?? "")
     }
     
     // MARK: Delegate methods
@@ -222,7 +222,7 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         if (URL.absoluteString == "dataAgreement://") {
             let dataAgreementRecord = organizationDetailsData?.purposeConsents?.filter({ $0.iD == dataAgreementId })
-            let dataAgreementVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "BBConsentDataAgreementVC") as! BBConsentDataAgreementVC
+            let dataAgreementVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "BBConsentDataAgreementVC") as! PDDataAgreementVC
             dataAgreementVC.dataAgreement = dataAgreementRecord
             self.navigationController?.pushViewController(dataAgreementVC, animated: true)
         } else if (URL.absoluteString == termsOFServiceUrl) {

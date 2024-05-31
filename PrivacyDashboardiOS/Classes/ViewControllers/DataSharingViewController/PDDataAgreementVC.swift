@@ -1,5 +1,5 @@
 //
-//  BBConsentDataAgreementVC.swift
+//  PDDataAgreementVC.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 10/11/23.
@@ -13,7 +13,7 @@ class DACell: UITableViewCell {
     @IBOutlet weak var descLabel: UITextView!
 }
 
-class BBConsentDataAgreementVC: UITableViewController {
+class PDDataAgreementVC: UITableViewController {
     var dataAgreement: [PurposeConsentWrapperV2]?
     var purposeSectionDic = [String:Any]()
     var policySectionDict = [String:Any]()

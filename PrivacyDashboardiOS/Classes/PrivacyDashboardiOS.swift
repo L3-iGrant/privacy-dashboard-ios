@@ -7,8 +7,8 @@
 
 import Foundation
 
-class BBConsentPrivacyDashboardiOS: UIViewController {
-    static var shared = BBConsentPrivacyDashboardiOS()
+class PrivacyDashboardiOS: UIViewController {
+    static var shared = PrivacyDashboardiOS()
     public var turnOnUserRequests = false
     public var turnOnAskMeSection = false
     public var turnOnAttributeDetailScreen = false
@@ -37,19 +37,19 @@ class BBConsentPrivacyDashboardiOS: UIViewController {
             let serviceManager = LoginServiceManager()
             serviceManager.getUserDetails()
             let data = apiKey.data(using: .utf8) ?? Data()
-            _ = BBConsentKeyChainUtils.save(key: "BBConsentApiKey", data: data)
+            _ = PDiOSKeyChainUtils.save(key: "BBConsentApiKey", data: data)
             
-            let frameworkBundle = Bundle(for: BBConsentOrganisationViewController.self)
+            let frameworkBundle = Bundle(for: PDOrganisationViewController.self)
             let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle") 
             var storyboard = UIStoryboard()
             if let resourceBundle = Bundle(url: bundleURL!) {
                 storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
             } else {
-                let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
+                let myBundle = Bundle(for: PDOrganisationViewController.self)
                 storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
             }
             
-            let orgVC = storyboard.instantiateViewController(withIdentifier: "BBConsentOrganisationViewController") as? BBConsentOrganisationViewController ?? BBConsentOrganisationViewController()
+            let orgVC = storyboard.instantiateViewController(withIdentifier: "BBConsentOrganisationViewController") as? PDOrganisationViewController ?? PDOrganisationViewController()
             orgVC.organisationId = organisationId
             let navVC = UINavigationController.init(rootViewController: orgVC)
             navVC.modalPresentationStyle = .fullScreen
@@ -58,7 +58,7 @@ class BBConsentPrivacyDashboardiOS: UIViewController {
         }
         
         if userId != "" {
-            let orgVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "BBConsentOrganisationViewController") as! BBConsentOrganisationViewController
+            let orgVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "BBConsentOrganisationViewController") as! PDOrganisationViewController
             orgVC.organisationId = organisationId
             self.userId = userId
             let navVC = UINavigationController.init(rootViewController: orgVC)
@@ -89,14 +89,14 @@ class BBConsentPrivacyDashboardiOS: UIViewController {
 }
 
 // MARK: - 'Individual' related api calls
-extension BBConsentPrivacyDashboardiOS {
+extension PrivacyDashboardiOS {
     public func createAnIndividual(id:String?, externalId:String?, externalIdType: String?, identityProviderId: String?, name: String, iamId: String?, email: String, phone:String, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
         let individual = Individual(id: id, externalID: externalId, externalIDType: externalId, identityProviderID: identityProviderId, name: name, iamID: iamId, email: email, phone: phone)
         let record = IndividualRecord(individual: individual)
         let data = try! JSONEncoder.init().encode(record)
         let dictionary = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
         
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.createIndividual, parameters: dictionary, method: .post) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.createIndividual, parameters: dictionary, method: .post) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -109,7 +109,7 @@ extension BBConsentPrivacyDashboardiOS {
     }
     
     public func readAnIndividual(individualId: String,  completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: [:], method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: [:], method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -126,7 +126,7 @@ extension BBConsentPrivacyDashboardiOS {
         let data = try! JSONEncoder.init().encode(record)
         let dictionary = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
         
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: dictionary ,method: .put) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: dictionary ,method: .put) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -138,7 +138,7 @@ extension BBConsentPrivacyDashboardiOS {
     }
     
     public func fetchAllIndividuals(completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchAllIndividuals, parameters: [:] ,method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchAllIndividuals, parameters: [:] ,method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)

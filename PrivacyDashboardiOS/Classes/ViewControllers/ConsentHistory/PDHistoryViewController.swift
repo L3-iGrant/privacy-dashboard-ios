@@ -1,6 +1,6 @@
 
 //
-//  BBConsentHistoryViewController.swift
+//  PDHistoryViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 11/09/23.
@@ -16,7 +16,7 @@ enum ConsentHistoryFilterMode {
     case SortByDate
 }
 
-class BBConsentHistoryViewController: BBConsentBaseViewController {
+class PDHistoryViewController: PDBaseViewController {
     @IBOutlet weak var historyListTable: SDStateTableView!
     var consentHistoryDetails: ConsentHistoryData?
     var histories: [ConsentHistory]?
@@ -51,7 +51,7 @@ class BBConsentHistoryViewController: BBConsentBaseViewController {
     }
 }
 
-extension BBConsentHistoryViewController: WebServiceTaskManagerProtocol {
+extension PDHistoryViewController: WebServiceTaskManagerProtocol {
     
     func didFinishTask(from manager:AnyObject, response:(data:RestResponse?,error:String?)) {
         self.removeLoadingIndicator()
@@ -84,7 +84,7 @@ extension BBConsentHistoryViewController: WebServiceTaskManagerProtocol {
     }
 }
 
-extension BBConsentHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+extension PDHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return histories?.count ?? 0
@@ -95,7 +95,7 @@ extension BBConsentHistoryViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KEventCellID,for: indexPath) as! BBConsentHistoryListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KEventCellID,for: indexPath) as! PDHistoryListTableViewCell
         cell.timeLbl.text = self.histories?[indexPath.row].timeStamp
         cell.history = self.histories?[indexPath.row]
         cell.showData()

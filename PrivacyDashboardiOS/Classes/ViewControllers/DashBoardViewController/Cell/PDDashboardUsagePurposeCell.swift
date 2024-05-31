@@ -1,6 +1,6 @@
 
 //
-//  BBConsentDashboardUsagePurposeCell.swift
+//  PDDashboardUsagePurposeCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 04/09/23.
@@ -9,10 +9,10 @@
 import UIKit
 
 protocol PurposeCellDelegate: AnyObject {
-    func purposeSwitchValueChanged(status:Bool,purposeInfo:PurposeConsent?,cell:BBConsentDashboardUsagePurposeCell)
+    func purposeSwitchValueChanged(status:Bool,purposeInfo:PurposeConsent?,cell:PDDashboardUsagePurposeCell)
 }
 
-class BBConsentDashboardUsagePurposeCell: UITableViewCell {
+class PDDashboardUsagePurposeCell: UITableViewCell {
     weak var delegate: PurposeCellDelegate?
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var dataLbl: UILabel!

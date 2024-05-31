@@ -1,6 +1,6 @@
 
 //
-//  BBConsentAskMeSliderTableViewCell.swift
+//  PDAskMeSliderTableViewCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 11/09/23.
@@ -13,7 +13,7 @@ protocol AskMeSliderCellDelegate: class {
 
 }
 
-class BBConsentAskMeSliderTableViewCell: UITableViewCell {
+class PDAskMeSliderTableViewCell: UITableViewCell {
     weak var delegate: AskMeSliderCellDelegate?
 
     @IBOutlet weak var selectedDaysLbl: UILabel!

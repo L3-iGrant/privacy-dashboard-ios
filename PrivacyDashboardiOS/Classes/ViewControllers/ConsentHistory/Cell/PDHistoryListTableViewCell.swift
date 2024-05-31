@@ -1,6 +1,6 @@
 
 //
-//  HistoryListTableViewCell.swift
+//  PDHistoryListTableViewCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 14/09/23.
@@ -10,7 +10,7 @@
 import UIKit
 import AFDateHelper
 
-class BBConsentHistoryListTableViewCell: UITableViewCell {
+class PDHistoryListTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
@@ -62,7 +62,7 @@ class BBConsentHistoryListTableViewCell: UITableViewCell {
                     }
                 }
             } else {
-                timeLbl.text = BBConsentUtilityMethods.relationalDateToString(dateString: dateval)
+                timeLbl.text = PDiOSUtilityMethods.relationalDateToString(dateString: dateval)
             }
         }
         contentLbl.text = history?.log

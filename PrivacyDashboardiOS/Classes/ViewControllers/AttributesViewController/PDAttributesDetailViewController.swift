@@ -1,5 +1,5 @@
 //
-//  BBConsentEditAttributesViewController.swift
+//  PDAttributesDetailViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 08/09/23.
@@ -13,7 +13,7 @@ enum ConsentType {
     case AskMe
 }
 
-class BBConsentAttributesDetailViewController: BBConsentBaseViewController {
+class PDAttributesDetailViewController: PDBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var consent :ConsentDetails?
     var purposeDetails : ConsentListingResponse?
@@ -59,10 +59,10 @@ class BBConsentAttributesDetailViewController: BBConsentBaseViewController {
     }
 }
 
-extension BBConsentAttributesDetailViewController: UITableViewDelegate,UITableViewDataSource {
+extension PDAttributesDetailViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if BBConsentPrivacyDashboardiOS.shared.turnOnAskMeSection {
+        if PrivacyDashboardiOS.shared.turnOnAskMeSection {
             return 3
         } else {
             return 2
@@ -101,7 +101,7 @@ extension BBConsentAttributesDetailViewController: UITableViewDelegate,UITableVi
             return allowCell
             
         } else {
-            let askMeCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedConsentAskMeCellID,for: indexPath) as! BBConsentAskMeSliderTableViewCell
+            let askMeCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedConsentAskMeCellID,for: indexPath) as! PDAskMeSliderTableViewCell
             askMeCell.delegate = self
             askMeCell.index = indexPath
             
@@ -160,7 +160,7 @@ extension BBConsentAttributesDetailViewController: UITableViewDelegate,UITableVi
     }
 }
 
-extension BBConsentAttributesDetailViewController: WebServiceTaskManagerProtocol {
+extension PDAttributesDetailViewController: WebServiceTaskManagerProtocol {
     
     func didFinishTask(from manager:AnyObject, response:(data:RestResponse?,error:String?)) {
         self.removeLoadingIndicator()
@@ -176,7 +176,7 @@ extension BBConsentAttributesDetailViewController: WebServiceTaskManagerProtocol
     }
 }
 
-extension  BBConsentAttributesDetailViewController: AskMeSliderCellDelegate {
+extension  PDAttributesDetailViewController: AskMeSliderCellDelegate {
     func askMeSliderValueChanged(days:Int) {
         consent?.status?.consented = .AskMe
         consent?.status?.days = days

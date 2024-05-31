@@ -1,5 +1,5 @@
 //
-//  BBConsentBaseViewController.swift
+//  PDBaseViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 04/09/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BBConsentBaseViewController: UIViewController {
+class PDBaseViewController: UIViewController {
     var spinner = UIActivityIndicatorView(style: .large)
     var loadingView: UIView = UIView()
     

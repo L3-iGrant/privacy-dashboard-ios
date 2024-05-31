@@ -1,5 +1,5 @@
 //
-//  BBConsentWebViewViewController.swift
+//  PDWebViewViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 08/09/23.
@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class BBConsentWebViewViewController: BBConsentBaseViewController, WKNavigationDelegate, WKUIDelegate {
+class PDWebViewViewController: PDBaseViewController, WKNavigationDelegate, WKUIDelegate {
     @IBOutlet weak var webview : WKWebView!
     var urlString  = ""
 

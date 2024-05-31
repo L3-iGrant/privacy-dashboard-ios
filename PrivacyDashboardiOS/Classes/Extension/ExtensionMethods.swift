@@ -542,7 +542,7 @@ extension NSMutableAttributedString {
 
 extension String {
     var localized: String {
-        let languageCode = BBConsentPrivacyDashboardiOS.shared.languageCode
+        let languageCode = PrivacyDashboardiOS.shared.languageCode
         if let bundle = Bundle(url: Bundle.main.bundleURL.appendingPathComponent("Frameworks").appendingPathComponent("PrivacyDashboardiOS.framework").appendingPathComponent("/\(languageCode).lproj")) {
             return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
         } else {

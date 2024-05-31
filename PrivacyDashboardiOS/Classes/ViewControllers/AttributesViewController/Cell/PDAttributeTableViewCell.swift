@@ -1,6 +1,6 @@
 
 //
-//  BBConsentAttributeTableViewCell.swift
+//  PDAttributeTableViewCell.swift
 //  PrivacyDashboardiOS
 
 //  Created by Mumthasir mohammed on 11/09/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BBConsentAttributeTableViewCell: UITableViewCell {
+class PDAttributeTableViewCell: UITableViewCell {
     @IBOutlet weak var rightArrow: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var dataLbl: UILabel!

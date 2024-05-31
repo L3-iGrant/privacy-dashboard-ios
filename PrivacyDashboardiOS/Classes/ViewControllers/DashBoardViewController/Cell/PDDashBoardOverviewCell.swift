@@ -1,6 +1,6 @@
 
 //
-//  BBConsentDashBoardOverviewCell.swift
+//  PDDashBoardOverviewCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 04/09/23.
@@ -9,7 +9,7 @@
 import UIKit
 import ExpandableLabel
 
-class BBConsentDashBoardOverviewCell: UITableViewCell {
+class PDDashBoardOverviewCell: UITableViewCell {
     @IBOutlet weak var overViewLbl: ExpandableLabel!
     @IBOutlet weak var overViewTitleLbl: UILabel!
     override func awakeFromNib() {

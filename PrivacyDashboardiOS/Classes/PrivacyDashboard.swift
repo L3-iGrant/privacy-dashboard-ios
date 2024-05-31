@@ -12,32 +12,32 @@ public class PrivacyDashboard {
     
     // MARK: - Invoking 'PrivacyDashboard' iOS SDK
     public static func showPrivacyDashboard(withApiKey: String, withUserId: String, withOrgId: String, withBaseUrl: String, withLocale: String = "en", accessToken: String = "", turnOnAskme: Bool, turnOnUserRequest: Bool, turnOnAttributeDetail: Bool) {
-        BBConsentPrivacyDashboardiOS.shared.languageCode = withLocale 
-        BBConsentPrivacyDashboardiOS.shared.turnOnUserRequests = turnOnUserRequest
-        BBConsentPrivacyDashboardiOS.shared.turnOnAskMeSection = turnOnAskme
-        BBConsentPrivacyDashboardiOS.shared.turnOnAttributeDetailScreen = turnOnAttributeDetail
-        BBConsentPrivacyDashboardiOS.shared.baseUrl = withBaseUrl
-        BBConsentPrivacyDashboardiOS.shared.show(organisationId: withOrgId, apiKey: withApiKey, userId: withUserId, accessToken: accessToken)
+        PrivacyDashboardiOS.shared.languageCode = withLocale 
+        PrivacyDashboardiOS.shared.turnOnUserRequests = turnOnUserRequest
+        PrivacyDashboardiOS.shared.turnOnAskMeSection = turnOnAskme
+        PrivacyDashboardiOS.shared.turnOnAttributeDetailScreen = turnOnAttributeDetail
+        PrivacyDashboardiOS.shared.baseUrl = withBaseUrl
+        PrivacyDashboardiOS.shared.show(organisationId: withOrgId, apiKey: withApiKey, userId: withUserId, accessToken: accessToken)
     }
     
     public static func showDataSharingUI(apiKey: String, userId: String, accessToken: String? = nil, baseUrlString: String, dataAgreementId: String, organisationName: String, organisationLogoImageUrl: String, termsOfServiceText : String, termsOfServiceUrl: String, cancelButtonText: String) {
-        let frameworkBundle = Bundle(for: BBConsentOrganisationViewController.self)
+        let frameworkBundle = Bundle(for: PDOrganisationViewController.self)
         let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
         var storyboard = UIStoryboard()
         if let resourceBundle = Bundle(url: bundleURL!) {
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
         } else {
-            let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
+            let myBundle = Bundle(for: PDOrganisationViewController.self)
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
         }
         // Passing Auth info
-        BBConsentPrivacyDashboardiOS.shared.userId = userId
-        BBConsentPrivacyDashboardiOS.shared.accessToken = accessToken
-        let sharingVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataSharingVC") as? BBConsentDataSharingVC ?? BBConsentDataSharingVC()
+        PrivacyDashboardiOS.shared.userId = userId
+        PrivacyDashboardiOS.shared.accessToken = accessToken
+        let sharingVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataSharingVC") as? PDDataSharingVC ?? PDDataSharingVC()
         // Passing other required info
         let data = apiKey.data(using: .utf8) ?? Data()
-        _ = BBConsentKeyChainUtils.save(key: "BBConsentApiKey", data: data)
-        BBConsentPrivacyDashboardiOS.shared.baseUrl = baseUrlString
+        _ = PDiOSKeyChainUtils.save(key: "BBConsentApiKey", data: data)
+        PrivacyDashboardiOS.shared.baseUrl = baseUrlString
         
         sharingVC.dataAgreementId = dataAgreementId
         sharingVC.theirOrgName = organisationName
@@ -66,24 +66,24 @@ public class PrivacyDashboard {
     }
     
     public static func configure(withApiKey: String, withUserId: String, withOrgId: String, withBaseUrl: String, withLocale: String, accessToken: String = "") {
-        let frameworkBundle = Bundle(for: BBConsentOrganisationViewController.self)
+        let frameworkBundle = Bundle(for: PDOrganisationViewController.self)
         let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
         var storyboard = UIStoryboard()
         if let resourceBundle = Bundle(url: bundleURL!) {
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
         } else {
-            let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
+            let myBundle = Bundle(for: PDOrganisationViewController.self)
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
         }
         
-        BBConsentPrivacyDashboardiOS.shared.languageCode = withLocale == "" ? "en" : withLocale
-        BBConsentPrivacyDashboardiOS.shared.userId = withUserId
-        BBConsentPrivacyDashboardiOS.shared.accessToken = accessToken
-        let sharingVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataSharingVC") as? BBConsentDataSharingVC ?? BBConsentDataSharingVC()
+        PrivacyDashboardiOS.shared.languageCode = withLocale == "" ? "en" : withLocale
+        PrivacyDashboardiOS.shared.userId = withUserId
+        PrivacyDashboardiOS.shared.accessToken = accessToken
+        let sharingVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataSharingVC") as? PDDataSharingVC ?? PDDataSharingVC()
         // Passing other required info
         let data = withApiKey.data(using: .utf8) ?? Data()
-        _ = BBConsentKeyChainUtils.save(key: "BBConsentApiKey", data: data)
-        BBConsentPrivacyDashboardiOS.shared.baseUrl = withBaseUrl
+        _ = PDiOSKeyChainUtils.save(key: "BBConsentApiKey", data: data)
+        PrivacyDashboardiOS.shared.baseUrl = withBaseUrl
         sharingVC.dataAgreementId = withOrgId
     }
     
@@ -108,7 +108,7 @@ public class PrivacyDashboard {
     }
     
     private static func createRecordApiCall(dataAgreementId: String, completion: @escaping (_ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + (dataAgreementId), parameters: [:], method: .post) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + (dataAgreementId), parameters: [:], method: .post) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completion(resultVal)
@@ -121,8 +121,8 @@ public class PrivacyDashboard {
     
     private static func updateRecordApiCall(dataAgreementId: String, recordId: String, status: Bool, completion: @escaping (_ resultVal: [String: Any]) -> Void) {
         let parameters = ["optIn" : status]
-        let url =  BBConsentPrivacyDashboardiOS.shared.baseUrl  + "/service/individual/record/consent-record/" + (recordId) + "?dataAgreementId=" + dataAgreementId
-        BBConsentBaseWebService.shared.makeAPICall(urlString: url, parameters: parameters, method: .put) { success, resultVal in
+        let url =  PrivacyDashboardiOS.shared.baseUrl  + "/service/individual/record/consent-record/" + (recordId) + "?dataAgreementId=" + dataAgreementId
+        PDBaseWebService.shared.makeAPICall(urlString: url, parameters: parameters, method: .put) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completion(resultVal)
@@ -135,7 +135,7 @@ public class PrivacyDashboard {
     
     // MARK: - Read data agreement record api call
     public static func readDataAgreementRecordApi(dataAgreementId: String, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void){
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + dataAgreementId, parameters: [:], method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + dataAgreementId, parameters: [:], method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -148,7 +148,7 @@ public class PrivacyDashboard {
     
     // MARK: - Read data agreement api call
     public static func readDataAgreementApi(dataAgreementId: String, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void){
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreement + dataAgreementId, parameters: [:], method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreement + dataAgreementId, parameters: [:], method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -160,16 +160,16 @@ public class PrivacyDashboard {
     }
     
     public static func showDataAgreementPolicy(dataAgreementDic: [String: Any]) {
-        let frameworkBundle = Bundle(for: BBConsentOrganisationViewController.self)
+        let frameworkBundle = Bundle(for: PDOrganisationViewController.self)
         let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
         var storyboard = UIStoryboard()
         if let resourceBundle = Bundle(url: bundleURL!) {
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
         } else {
-            let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
+            let myBundle = Bundle(for: PDOrganisationViewController.self)
             storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
         }
-        let dataAgreementVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataAgreementVC") as! BBConsentDataAgreementVC
+        let dataAgreementVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataAgreementVC") as! PDDataAgreementVC
         dataAgreementVC.dataAgreementDic = [dataAgreementDic]
         dataAgreementVC.showCloseButton = true
         let navVC = UINavigationController.init(rootViewController: dataAgreementVC)
@@ -183,9 +183,9 @@ public class PrivacyDashboard {
         let record = IndividualRecord(individual: individual)
         let data = try! JSONEncoder.init().encode(record)
         let dictionary = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
-        BBConsentPrivacyDashboardiOS.shared.userId = "NO USER ID NEEDED HERE" // Only for create indvidual call
+        PrivacyDashboardiOS.shared.userId = "NO USER ID NEEDED HERE" // Only for create indvidual call
         
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.createIndividual, parameters: dictionary, method: .post) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.createIndividual, parameters: dictionary, method: .post) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -198,7 +198,7 @@ public class PrivacyDashboard {
     }
     
     public static func readAnIndividual(individualId: String,  completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: [:], method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: [:], method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -215,7 +215,7 @@ public class PrivacyDashboard {
         let data = try! JSONEncoder.init().encode(record)
         let dictionary = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
         
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: dictionary ,method: .put) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: dictionary ,method: .put) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -227,7 +227,7 @@ public class PrivacyDashboard {
     }
     
     public static func fetchAllIndividuals(completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchAllIndividuals, parameters: [:] ,method: .get) { success, resultVal in
+        PDBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchAllIndividuals, parameters: [:] ,method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)

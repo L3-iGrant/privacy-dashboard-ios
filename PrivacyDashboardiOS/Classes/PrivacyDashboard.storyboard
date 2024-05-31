@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Consent Organisation View Controller-->
+        <!--Organisation View Controller-->
         <scene sceneID="wjK-DJ-Npl">
             <objects>
-                <viewController storyboardIdentifier="BBConsentOrganisationViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="1wF-7H-h88" customClass="BBConsentOrganisationViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BBConsentOrganisationViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="1wF-7H-h88" customClass="PDOrganisationViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ymC-ip-fPX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="-60" width="393" height="912"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" rowHeight="235" id="cCX-oj-O9Z" customClass="BBConsentDashboardHeaderCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" rowHeight="235" id="cCX-oj-O9Z" customClass="PDDashboardHeaderCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="235"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cCX-oj-O9Z" id="uJI-vv-le7">
@@ -105,7 +105,7 @@
                                             <outlet property="orgImageView" destination="PqS-cP-Ocb" id="WOn-0p-jwT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverViewCell" rowHeight="44" id="Y7l-Nd-hkk" customClass="BBConsentDashBoardOverviewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverViewCell" rowHeight="44" id="Y7l-Nd-hkk" customClass="PDDashBoardOverviewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="285" width="393" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y7l-Nd-hkk" id="wEN-dj-w0I">
@@ -147,7 +147,7 @@
                                             <outlet property="overViewTitleLbl" destination="5Y9-ut-fj2" id="lhR-K6-obd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="70" id="jwH-ck-M7h" customClass="BBConsentDashboardDataAgreementCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="70" id="jwH-ck-M7h" customClass="PDDashboardDataAgreementCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="329" width="393" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jwH-ck-M7h" id="Y1G-gS-ot5">
@@ -190,7 +190,7 @@
                                             <outlet property="dataAgreementsLbl" destination="Ecb-vU-GOc" id="0YW-uS-zBD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentCell" rowHeight="80" id="fax-C1-85c" customClass="BBConsentAttributeTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentCell" rowHeight="80" id="fax-C1-85c" customClass="PDAttributeTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="399" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fax-C1-85c" id="bsI-Ad-OcD">
@@ -271,7 +271,7 @@
                                             <outlet property="titleLbl" destination="PRs-vJ-tkd" id="V7x-UZ-div"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PurposeCell" rowHeight="80" id="qU2-nQ-nfs" customClass="BBConsentDashboardUsagePurposeCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PurposeCell" rowHeight="80" id="qU2-nQ-nfs" customClass="PDDashboardUsagePurposeCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="479" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qU2-nQ-nfs" id="jmv-rc-aaY">
@@ -459,10 +459,10 @@
             </objects>
             <point key="canvasLocation" x="881.67938931297704" y="24.647887323943664"/>
         </scene>
-        <!--Consent Attributes View Controller-->
+        <!--Attributes View Controller-->
         <scene sceneID="vGj-o5-dOR">
             <objects>
-                <viewController storyboardIdentifier="ConsentListVC" automaticallyAdjustsScrollViewInsets="NO" id="cBI-8F-qal" customClass="BBConsentAttributesViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsentListVC" automaticallyAdjustsScrollViewInsets="NO" id="cBI-8F-qal" customClass="PDAttributesViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vMy-Ze-ryq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,7 +475,7 @@
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <color key="separatorColor" red="0.84696626659999996" green="0.84711211919999996" blue="0.84695702790000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverViewCell" rowHeight="44" id="atK-6O-uSl" customClass="BBConsentDashBoardOverviewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverViewCell" rowHeight="44" id="atK-6O-uSl" customClass="PDDashBoardOverviewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="atK-6O-uSl" id="8LS-Ks-p1a">
@@ -515,7 +515,7 @@
                                                     <outlet property="overViewLbl" destination="SKd-Hp-UAA" id="6fL-bN-ooH"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentCell" rowHeight="70" id="lGQ-jN-3M2" customClass="BBConsentAttributeTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentCell" rowHeight="70" id="lGQ-jN-3M2" customClass="PDAttributeTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="94" width="393" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lGQ-jN-3M2" id="szl-In-VDo">
@@ -594,7 +594,7 @@
                                                     <outlet property="titleLbl" destination="kRm-cn-3Nr" id="5L8-g2-JZI"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentHeaderTableViewCell" id="rbk-Ie-Hy0" customClass="BBConsentAttributesHeaderCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsentHeaderTableViewCell" id="rbk-Ie-Hy0" customClass="PDAttributesHeaderCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="164" width="393" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rbk-Ie-Hy0" id="VZd-Vm-qGg">
@@ -712,10 +712,10 @@
             </objects>
             <point key="canvasLocation" x="1582" y="25"/>
         </scene>
-        <!--Consent Attributes Detail View Controller-->
+        <!--Attributes Detail View Controller-->
         <scene sceneID="9fH-Io-m9h">
             <objects>
-                <viewController storyboardIdentifier="ConsentVC" id="t7T-Ol-R1s" customClass="BBConsentAttributesDetailViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsentVC" id="t7T-Ol-R1s" customClass="PDAttributesDetailViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6kt-Si-y4c">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -740,7 +740,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AskMeCell" rowHeight="95" id="bGW-s2-Dan" customClass="BBConsentAskMeSliderTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AskMeCell" rowHeight="95" id="bGW-s2-Dan" customClass="PDAskMeSliderTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="145.33333206176758" width="393" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bGW-s2-Dan" id="FxS-wO-x8m">
@@ -856,10 +856,10 @@
             </objects>
             <point key="canvasLocation" x="2297" y="25"/>
         </scene>
-        <!--Consent Web View View Controller-->
+        <!--Web View View Controller-->
         <scene sceneID="aN6-YX-gl8">
             <objects>
-                <viewController storyboardIdentifier="WebViewVC" id="03V-DF-Usc" customClass="BBConsentWebViewViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewVC" id="03V-DF-Usc" customClass="PDWebViewViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eOE-OX-xJw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -890,10 +890,10 @@
             </objects>
             <point key="canvasLocation" x="3002" y="25"/>
         </scene>
-        <!--Consent History View Controller-->
+        <!--History View Controller-->
         <scene sceneID="3jS-8w-RM1">
             <objects>
-                <viewController storyboardIdentifier="ConsentHistoryVC" id="lDv-XR-jrg" customClass="BBConsentHistoryViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConsentHistoryVC" id="lDv-XR-jrg" customClass="PDHistoryViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5O-LS-sKh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -905,7 +905,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="62" id="T1H-Ki-Lvi" customClass="BBConsentHistoryListTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="62" id="T1H-Ki-Lvi" customClass="PDHistoryListTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="62"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T1H-Ki-Lvi" id="a1b-cQ-KhQ">
@@ -1000,10 +1000,10 @@
             </objects>
             <point key="canvasLocation" x="882" y="723"/>
         </scene>
-        <!--Consent Request Status View Controller-->
+        <!--Status View Controller-->
         <scene sceneID="sA8-N0-iog">
             <objects>
-                <viewController storyboardIdentifier="RequestStatusHistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iEH-Yx-wc0" customClass="BBConsentRequestStatusViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestStatusHistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iEH-Yx-wc0" customClass="PDStatusViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pRu-VE-Bga">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1043,7 +1043,7 @@
                                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RequestStatusTableViewCell" rowHeight="81" id="WbD-ct-zBa" customClass="BBConsentRequestStatusTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RequestStatusTableViewCell" rowHeight="81" id="WbD-ct-zBa" customClass="PDRequestStatusTableViewCell" customModule="PrivacyDashboardiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="81"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WbD-ct-zBa" id="Nnv-s9-eRA">
@@ -1133,10 +1133,10 @@
             </objects>
             <point key="canvasLocation" x="1581" y="723"/>
         </scene>
-        <!--Consent Download Data Progress View Controller-->
+        <!--Download Data Progress View Controller-->
         <scene sceneID="50e-nN-qdy">
             <objects>
-                <viewController storyboardIdentifier="DownloadDataProgressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Umm-HH-ZuU" customClass="BBConsentDownloadDataProgressViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DownloadDataProgressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Umm-HH-ZuU" customClass="PDDownloadDataProgressViewController" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PwV-ft-gXj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1190,10 +1190,10 @@
             </objects>
             <point key="canvasLocation" x="2296.9465648854962" y="722.53521126760563"/>
         </scene>
-        <!--Consent Data SharingVC-->
+        <!--Data SharingVC-->
         <scene sceneID="43M-Ax-GsB">
             <objects>
-                <viewController storyboardIdentifier="BBConsentDataSharingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Px2-MR-0WT" customClass="BBConsentDataSharingVC" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BBConsentDataSharingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Px2-MR-0WT" customClass="PDDataSharingVC" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0G6-HN-VLA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1430,10 +1430,10 @@
             </objects>
             <point key="canvasLocation" x="3000.7633587786258" y="722.53521126760563"/>
         </scene>
-        <!--Consent Data AgreementVC-->
+        <!--Data AgreementVC-->
         <scene sceneID="Sr5-6r-wVh">
             <objects>
-                <tableViewController storyboardIdentifier="BBConsentDataAgreementVC" id="geb-xV-SeR" customClass="BBConsentDataAgreementVC" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BBConsentDataAgreementVC" id="geb-xV-SeR" customClass="PDDataAgreementVC" customModule="PrivacyDashboardiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="sA8-ps-bLx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1518,10 +1518,10 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

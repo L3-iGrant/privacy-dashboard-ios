@@ -14,6 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7CC10086E952C9581C58D9E7 /* Pods_PrivacyDashboardiOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AD13715EBBE0C3AE34662B /* Pods_PrivacyDashboardiOS_Example.framework */; };
+		90254AA42BD669FF004A19B4 /* PrivacyDashboardiOS.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 90254AA32BD669FF004A19B4 /* PrivacyDashboardiOS.podspec */; };
 		FA0D9CEE44271B965541C8DA /* Pods_PrivacyDashboardiOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2AEA94EADA5D5FE9521491 /* Pods_PrivacyDashboardiOS_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,10 +44,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		64FCDE7B5DB944D1D9D0BCE6 /* Pods-PrivacyDashboardiOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivacyDashboardiOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-PrivacyDashboardiOS_Example/Pods-PrivacyDashboardiOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		76AD13715EBBE0C3AE34662B /* Pods_PrivacyDashboardiOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrivacyDashboardiOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90254AA32BD669FF004A19B4 /* PrivacyDashboardiOS.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PrivacyDashboardiOS.podspec; path = ../../PrivacyDashboardiOS.podspec; sourceTree = "<group>"; };
 		AA2AEA94EADA5D5FE9521491 /* Pods_PrivacyDashboardiOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrivacyDashboardiOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C511A523595FEF9A371BA978 /* Pods-PrivacyDashboardiOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivacyDashboardiOS_Tests.debug.xcconfig"; path = "Target Support Files/Pods-PrivacyDashboardiOS_Tests/Pods-PrivacyDashboardiOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C984C36C8AFD28CAECC139F1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		EF1E06AE38B2AD8AD3298B86 /* PrivacyDashboardiOS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PrivacyDashboardiOS.podspec; path = ../PrivacyDashboardiOS.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +153,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				EF1E06AE38B2AD8AD3298B86 /* PrivacyDashboardiOS.podspec */,
+				90254AA32BD669FF004A19B4 /* PrivacyDashboardiOS.podspec */,
 				C984C36C8AFD28CAECC139F1 /* README.md */,
 				5B91EF297BD6DA65E3C25E1A /* LICENSE */,
 			);
@@ -248,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90254AA42BD669FF004A19B4 /* PrivacyDashboardiOS.podspec in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginWebService: BBConsentBaseWebService {
+class LoginWebService: PDBaseWebService {
     func callLoginService(){
         self.url = baseUrl + "users/login"
         postServiceCall()

@@ -1,5 +1,5 @@
 //
-//  BBConsentOrganisationViewController.swift
+//  PDOrganisationViewController.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 04/09/23.
@@ -9,7 +9,7 @@ import Foundation
 import ExpandableLabel
 import SafariServices
 
-class BBConsentOrganisationViewController: BBConsentBaseViewController {
+class PDOrganisationViewController: PDBaseViewController {
     @IBOutlet weak var orgTableView: UITableView!
     @IBOutlet weak var navTitleLbl: UILabel!
     @IBOutlet weak var backBtn: UIButton!
@@ -21,9 +21,9 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
     var organisationId = ""
     var isNeedToRefresh = false
     var overViewCollpased = true
-    let popover = BBConsentPopOver()
+    let popover = PDiOSPopOver()
     
-    let baseUrl = BBConsentPrivacyDashboardiOS.shared.baseUrl
+    let baseUrl = PrivacyDashboardiOS.shared.baseUrl
     let api = OrganisationWebService()
     var dataAgreementsObj: DataAgreementsModel?
     var consentRecordsObj : RecordsModel?
@@ -179,7 +179,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
             
             if let privacyPolicy =  self.organizationObj?.organisation.policyURL {
                 if self.verifyUrl(urlString: privacyPolicy) {
-                    let webviewVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.webViewVC) as! BBConsentWebViewViewController
+                    let webviewVC = self.storyboard?.instantiateViewController(withIdentifier: Constant.ViewControllerID.webViewVC) as! PDWebViewViewController
                     webviewVC.urlString = privacyPolicy
                     self.navigationController?.pushViewController(webviewVC, animated: true)
                 } else {
@@ -200,7 +200,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
         
         // Add actions
         actionSheetController.addAction(firstAction)
-        if BBConsentPrivacyDashboardiOS.shared.turnOnUserRequests {
+        if PrivacyDashboardiOS.shared.turnOnUserRequests {
             actionSheetController.addAction(secondAction)
         }
         actionSheetController.addAction(thirdAction)
@@ -247,13 +247,13 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
     }
     
     func showRequestedStatus() {
-        let RequestStatusHistoryVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.requestStatusHistoryVC) as! BBConsentRequestStatusViewController
+        let RequestStatusHistoryVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.requestStatusHistoryVC) as! PDStatusViewController
         RequestStatusHistoryVC.orgId = organisationId
         navigationController?.pushViewController(RequestStatusHistoryVC, animated: true)
     }
     
     func showConsentHistory() {
-        let ConsentHistoryVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.consentHistoryVC) as! BBConsentHistoryViewController
+        let ConsentHistoryVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.consentHistoryVC) as! PDHistoryViewController
         ConsentHistoryVC.orgId = organisationId
         navigationController?.pushViewController(ConsentHistoryVC, animated: true)
     }
@@ -267,7 +267,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
     }
 }
 
-extension BBConsentOrganisationViewController: UITableViewDelegate, UITableViewDataSource {
+extension PDOrganisationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if dataAgreementsObj?.dataAgreements != nil {
@@ -313,12 +313,12 @@ extension BBConsentOrganisationViewController: UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if  indexPath.section == 0 {
             if indexPath.row == 0 {
-                let orgCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedImageCellID,for: indexPath) as! BBConsentDashboardHeaderCell
+                let orgCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedImageCellID,for: indexPath) as! PDDashboardHeaderCell
                 orgCell.orgData = organizationObj
                 orgCell.showData()
                 return orgCell
             } else {
-                let orgOverViewCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedOverViewCellID,for: indexPath) as! BBConsentDashBoardOverviewCell
+                let orgOverViewCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedOverViewCellID,for: indexPath) as! PDDashBoardOverviewCell
                 //  orgOverViewCell.overViewLbl.text = organisaionDeatils?.organization?.descriptionField
                 orgOverViewCell.overViewLbl.delegate = self
                 orgOverViewCell.layoutIfNeeded()
@@ -345,7 +345,7 @@ extension BBConsentOrganisationViewController: UITableViewDelegate, UITableViewD
             let headerCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.KOrgDetailedConsentHeaderCellID,for: indexPath)
             return headerCell
         } else {
-            let consentCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.purposeCell,for: indexPath) as! BBConsentDashboardUsagePurposeCell
+            let consentCell = tableView.dequeueReusableCell(withIdentifier:Constant.CustomTabelCell.purposeCell,for: indexPath) as! PDDashboardUsagePurposeCell
             consentCell.tag = indexPath.row
             consentCell.consentInfo = dataAgreementsObj?.dataAgreements[indexPath.row]
             
@@ -375,7 +375,7 @@ extension BBConsentOrganisationViewController: UITableViewDelegate, UITableViewD
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
-            let consentVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.consentListVC) as! BBConsentAttributesViewController
+            let consentVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: Constant.ViewControllerID.consentListVC) as! PDAttributesViewController
             consentVC.dataAgreementsModel = self.dataAgreementsObj
             consentVC.organization = self.organizationObj
             consentVC.purposeInfo = dataAgreementsObj?.dataAgreements[indexPath.row] 
@@ -389,9 +389,9 @@ extension BBConsentOrganisationViewController: UITableViewDelegate, UITableViewD
     }
 }
 
-extension BBConsentOrganisationViewController: ExpandableLabelDelegate ,PurposeCellDelegate {
+extension PDOrganisationViewController: ExpandableLabelDelegate ,PurposeCellDelegate {
     
-    func purposeSwitchValueChanged(status:Bool,purposeInfo:PurposeConsent?,cell:BBConsentDashboardUsagePurposeCell) {
+    func purposeSwitchValueChanged(status:Bool,purposeInfo:PurposeConsent?,cell:PDDashboardUsagePurposeCell) {
         let serviceManager = OrganisationWebServiceManager()
         // serviceManager.managerDelegate = self
         var alrtMsg = Constant.Alert.areYouSureYouWantToAllow.localized
@@ -463,7 +463,7 @@ extension BBConsentOrganisationViewController: ExpandableLabelDelegate ,PurposeC
     }
 }
 
-extension BBConsentOrganisationViewController: SFSafariViewControllerDelegate {
+extension PDOrganisationViewController: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true, completion: nil)
     }

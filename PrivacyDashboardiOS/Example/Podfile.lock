@@ -5,7 +5,7 @@ PODS:
   - IQKeyboardManagerSwift (6.5.11)
   - Kingfisher (6.3.1)
   - MiniLayout (1.3.0)
-  - PrivacyDashboardiOS (2024.2.1):
+  - PrivacyDashboardiOS (2024.4.2):
     - AFDateHelper
     - Alamofire (~> 5.4.1)
     - ExpandableLabel
@@ -51,7 +51,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MiniLayout: 57c42e7e44cb47a9ef95650970ee1d2718725518
-  PrivacyDashboardiOS: fef5a33d9beba1ccd8e54b0903ee2b0f690111dc
+  PrivacyDashboardiOS: 42e86a1ac1781fd88bd2021259dfee4b2e928fac
   SDStateTableView: 9c69677cc23e56428116dce3f4d7650cb2f6947e
   StepProgressView: 6f23d95d0ebb912fc82dbd6a2ba96e805a0a7846
   SweeterSwift: 3910bab8ba35b6964d5169a3c52b2c87d930b61c
@@ -60,4 +60,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 003542bb17705062f2dd63058a21683778c5d454
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.15.2

@@ -1,5 +1,5 @@
 //
-//  BBConsentDashboardDataAgreementCell.swift
+//  PDDataAgreementCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 20/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BBConsentDashboardDataAgreementCell: UITableViewCell {
+class PDDashboardDataAgreementCell: UITableViewCell {
 
     @IBOutlet weak var dataAgreementsLbl: UILabel!
     override func awakeFromNib() {

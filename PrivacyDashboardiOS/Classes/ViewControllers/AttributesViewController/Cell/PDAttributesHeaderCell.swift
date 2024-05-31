@@ -1,12 +1,12 @@
 //
-//  ConsentHeaderTableViewCell.swift
+//  PDAttributesHeaderCell.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 11/09/23.
 
 import UIKit
 
-class BBConsentAttributesHeaderCell: UITableViewCell {
+class PDAttributesHeaderCell: UITableViewCell {
     
     @IBOutlet weak var dataAttributeLbl: UILabel!
     @IBOutlet weak var policyButton: UIButton!

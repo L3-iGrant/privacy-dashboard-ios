@@ -23,7 +23,7 @@ class SignUpData: NSObject {
     
 }
 
-class LoginViewController: BBConsentBaseViewController {
+class LoginViewController: PDBaseViewController {
 
     @IBOutlet weak var emailTxtContainer: UIView!
     @IBOutlet weak var passwordTxtContainer: UIView!
@@ -137,7 +137,7 @@ class LoginViewController: BBConsentBaseViewController {
     }
     
     func showOrgDetail(){
-        let orgVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "OrgDetailedVC") as! BBConsentOrganisationViewController
+        let orgVC = Constant.getStoryboard(vc: self.classForCoder).instantiateViewController(withIdentifier: "OrgDetailedVC") as! PDOrganisationViewController
         orgVC.organisationId = orgId ?? ""
         self.navigationController?.pushViewController(orgVC, animated: true)
     }

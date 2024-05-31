@@ -1,5 +1,5 @@
 //
-//  BBConsentKeychainUtils.swift
+//  PDiOSKeyChainUtils.swift
 //  PrivacyDashboardiOS
 //
 //  Created by Mumthasir mohammed on 31/08/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BBConsentKeyChainUtils {
+class PDiOSKeyChainUtils {
     static func save(key: String, data: Data) -> OSStatus {
         let query = [
             kSecClass as String       : kSecClassGenericPassword as String,

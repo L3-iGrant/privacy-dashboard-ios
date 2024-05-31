@@ -50,10 +50,10 @@ class OrganisationWebServiceManager: WebServiceTaskManager {
     var requestId = ""
     var requestType = RequestType.DownloadData
     var isLoadMore = false
-    var baseUrl = BBConsentPrivacyDashboardiOS.shared.baseUrl
+    var baseUrl = PrivacyDashboardiOS.shared.baseUrl
     
     func refreshToken(){
-        let service = BBConsentBaseWebService()
+        let service = PDBaseWebService()
         service.delegate = self
         service.serviceType = .ReCallLogin
         service.refreshToken()
@@ -151,7 +151,7 @@ class OrganisationWebServiceManager: WebServiceTaskManager {
             //        if  UserInfo.currentUser()?.userID != nil{
             //            userId =  (UserInfo.currentUser()?.userID)!
             //        }
-            let userID = BBConsentPrivacyDashboardiOS.shared.userId ?? ""
+            let userID = PrivacyDashboardiOS.shared.userId ?? ""
             let urlPart = "/consents/" + consentID + "/purposes/" + purposeId + "/attributes/" + attributeId
             self.searchService.url = self.baseUrl + "organizations/" + orgId + "/users/" + userID + urlPart
             self.searchService.parameters = valuesDict
