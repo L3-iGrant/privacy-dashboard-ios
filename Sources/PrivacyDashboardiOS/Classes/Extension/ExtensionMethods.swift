@@ -432,7 +432,7 @@ extension UIView {
     func loadNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nibName = type(of: self).description().components(separatedBy: ".").last!
-        let nib = UINib(nibName: nibName, bundle: bundle)
+        let nib = UINib(nibName: nibName, bundle: Bundle.module)
         return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
 }
@@ -550,7 +550,7 @@ extension String {
            let resourceBundle = Bundle(path: resourceBundlePath),
            let languageBundlePath = resourceBundle.path(forResource: languageCode, ofType: "lproj"),
            let languageBundle = Bundle(path: languageBundlePath) {
-            return NSLocalizedString(self, tableName: nil, bundle: languageBundle, value: "", comment: "")
+            return NSLocalizedString(self, tableName: nil, bundle: Bundle.module, value: "", comment: "")
         } else {
             if let resourceBundlePath = Bundle(for: PrivacyDashboard.self).path(forResource: "PrivacyDashboardiOS", ofType: "bundle"),
                let resourceBundle = Bundle(path: resourceBundlePath),
