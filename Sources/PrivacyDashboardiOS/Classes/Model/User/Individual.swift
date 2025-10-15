@@ -30,5 +30,7 @@ class Individual: Codable {
         self.iamID = iamID
         self.email = email
         self.phone = phone
+        self.pushNotificationToken = pushNotificationToken
+        self.deviceType = deviceType
     }
 }
