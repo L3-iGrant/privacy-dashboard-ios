@@ -169,6 +169,11 @@ extension BBConsentAttributesBottomSheetViewController: UITableViewDataSource, U
         consentCell.consentInfo = dataAttributes?[indexPath.row]
         consentCell.consent = consentVal
         consentCell.showData()
+        if BBConsentPrivacyDashboardiOS.shared.turnOnAttributeDetailScreen == true {
+            consentCell.consentTypeTrailingConstraint.constant = 13
+        } else {
+            consentCell.consentTypeTrailingConstraint.constant = 0
+        }
         let isLastCell = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
         consentCell.divider.isHidden = isLastCell
         if isFromQR {
