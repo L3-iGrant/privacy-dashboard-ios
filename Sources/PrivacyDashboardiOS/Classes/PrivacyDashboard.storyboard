@@ -993,7 +993,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8086644704" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-vo-SuM">
-                                                                    <rect key="frame" x="0.0" y="50.666666666666664" width="283" height="16.999999999999993"/>
+                                                                    <rect key="frame" x="0.0" y="50.666666666666664" width="293" height="16.999999999999993"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="dsY-0Q-HaT"/>
                                                                     </constraints>
@@ -1012,14 +1012,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="J01-Lk-Ofr">
-                                                                    <rect key="frame" x="329" y="13" width="9" height="14"/>
+                                                                    <rect key="frame" x="339" y="13" width="9" height="14"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="9" id="81A-tf-g28"/>
                                                                         <constraint firstAttribute="height" constant="14" id="qxE-x3-Xbs"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xl3-Sq-ryl">
-                                                                    <rect key="frame" x="291" y="43.666666666666664" width="49" height="30.999999999999993"/>
+                                                                    <rect key="frame" x="301" y="43.666666666666664" width="49" height="30.999999999999993"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="47" id="Fhj-gM-c8D"/>
                                                                         <constraint firstAttribute="height" constant="31" id="V2I-ZJ-i1y"/>
@@ -1035,12 +1035,12 @@
                                                                 <constraint firstItem="J01-Lk-Ofr" firstAttribute="centerY" secondItem="TnU-j0-XxC" secondAttribute="centerY" id="9zT-J8-9yF"/>
                                                                 <constraint firstItem="TnU-j0-XxC" firstAttribute="top" secondItem="rK8-kN-WiG" secondAttribute="top" constant="10" id="AdC-z7-Uzu"/>
                                                                 <constraint firstAttribute="trailing" secondItem="TnU-j0-XxC" secondAttribute="trailing" constant="15" id="CHV-VQ-VWC"/>
-                                                                <constraint firstAttribute="trailing" secondItem="xl3-Sq-ryl" secondAttribute="trailing" constant="15" id="HXn-EC-2Hx"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xl3-Sq-ryl" secondAttribute="trailing" constant="5" id="HXn-EC-2Hx"/>
                                                                 <constraint firstAttribute="bottom" secondItem="01d-v4-ru9" secondAttribute="bottom" id="IpM-x0-89N"/>
                                                                 <constraint firstAttribute="trailing" secondItem="01d-v4-ru9" secondAttribute="trailing" id="RZE-HM-ndy"/>
                                                                 <constraint firstItem="01d-v4-ru9" firstAttribute="leading" secondItem="rK8-kN-WiG" secondAttribute="leading" id="al6-eb-2Js"/>
                                                                 <constraint firstItem="TnU-j0-XxC" firstAttribute="leading" secondItem="rK8-kN-WiG" secondAttribute="leading" id="bBj-Uy-nuV"/>
-                                                                <constraint firstAttribute="trailing" secondItem="J01-Lk-Ofr" secondAttribute="trailing" constant="15" id="hub-Vj-S9b"/>
+                                                                <constraint firstAttribute="trailing" secondItem="J01-Lk-Ofr" secondAttribute="trailing" constant="5" id="hub-Vj-S9b"/>
                                                                 <constraint firstItem="7p8-vo-SuM" firstAttribute="centerY" secondItem="xl3-Sq-ryl" secondAttribute="centerY" id="j4i-Ui-D8r"/>
                                                                 <constraint firstItem="xl3-Sq-ryl" firstAttribute="leading" secondItem="7p8-vo-SuM" secondAttribute="trailing" constant="8" id="yjy-P2-MEg"/>
                                                             </constraints>
@@ -1262,6 +1262,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="consentTypeLbl" destination="efo-fM-qyS" id="KrY-ke-PNL"/>
+                                                    <outlet property="consentTypeTrailingConstraint" destination="Wpr-bI-6om" id="36d-7r-x9B"/>
                                                     <outlet property="dataLbl" destination="Mg5-qK-SOP" id="ZAf-Zv-FrU"/>
                                                     <outlet property="divider" destination="ZDN-hE-eMN" id="cDO-Eu-y4e"/>
                                                     <outlet property="rightArrow" destination="cH8-i2-8rp" id="rCV-nU-LPp"/>
