@@ -76,7 +76,7 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
             return r
         }
         
-        self.betweenLogosImageView.image = UIImage(named: "ic_between_logo", in: Bundle(for: type(of:self)), compatibleWith: nil)
+        self.betweenLogosImageView.image = UIImage(named: "ic_between_logo", in: Bundle.module, compatibleWith: nil)
         let logoUrlFromOrgData = URL(string: (organizationData?.logoImageURL ?? ""))
         let placeholder = UIImage(named: Constant.Images.iGrantTick, in: Constant.getResourcesBundle(vc: BBConsentBaseViewController().classForCoder), compatibleWith: nil)
         if let logoUrlFromClient = URL(string: theirLogoImageUrl ?? "") {

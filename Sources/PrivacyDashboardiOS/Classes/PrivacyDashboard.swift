@@ -34,10 +34,10 @@ public class PrivacyDashboard {
         let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
         var storyboard = UIStoryboard()
         if let resourceBundle = Bundle(url: bundleURL!) {
-            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
+            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
         } else {
             let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
-            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
+            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
         }
         // Passing Auth info
         BBConsentPrivacyDashboardiOS.shared.userId = userId
@@ -65,7 +65,7 @@ public class PrivacyDashboard {
                 // Return the records reponse
                 self.receiveDataBackFromPrivacyDashboard?(resultVal)
             } else {
-                // If no record found for the data agreement ID 
+                // If no record found for the data agreement ID
                 // Navigate to Data sharing UI screen
                 let navVC = UINavigationController.init(rootViewController: sharingVC)
                 navVC.modalPresentationStyle = .fullScreen
@@ -79,10 +79,10 @@ public class PrivacyDashboard {
         let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
         var storyboard = UIStoryboard()
         if let resourceBundle = Bundle(url: bundleURL!) {
-            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
+            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
         } else {
             let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
-            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
+            storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
         }
         
         BBConsentPrivacyDashboardiOS.shared.languageCode = withLocale == "" ? "en" : withLocale
@@ -174,10 +174,10 @@ public class PrivacyDashboard {
             let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
             var storyboard = UIStoryboard()
             if let resourceBundle = Bundle(url: bundleURL!) {
-                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
+                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
             } else {
                 let myBundle = Bundle(for: BBConsentOrganisationBottomSheetViewController.self)
-                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
+                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
             }
             let dataAgreementVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataAgreementBottomSheetVC") as! BBConsentDataAgreementBottomSheetVC
             dataAgreementVC.dataAgreementDic = [dataAgreementDic]
@@ -189,10 +189,10 @@ public class PrivacyDashboard {
             let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PrivacyDashboardiOS.bundle")
             var storyboard = UIStoryboard()
             if let resourceBundle = Bundle(url: bundleURL!) {
-                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: resourceBundle)
+                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
             } else {
                 let myBundle = Bundle(for: BBConsentOrganisationViewController.self)
-                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: myBundle)
+                storyboard = UIStoryboard(name: "PrivacyDashboard", bundle: Bundle.module)
             }
             let dataAgreementVC = storyboard.instantiateViewController(withIdentifier: "BBConsentDataAgreementVC") as! BBConsentDataAgreementVC
             dataAgreementVC.dataAgreementDic = [dataAgreementDic]

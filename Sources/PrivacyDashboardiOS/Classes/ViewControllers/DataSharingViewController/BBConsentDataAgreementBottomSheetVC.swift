@@ -35,7 +35,7 @@ class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableV
             debugPrint(error)
         }
         let bundle = Bundle(for: DataAgreementCellV2.self)
-        tableView.register(UINib(nibName: "DataAgreementCellV2", bundle: bundle), forCellReuseIdentifier: "DataAgreementCellV2")
+        tableView.register(UINib(nibName: "DataAgreementCellV2", bundle: Bundle.module), forCellReuseIdentifier: "DataAgreementCellV2")
         setUI()
         setData()
     }
