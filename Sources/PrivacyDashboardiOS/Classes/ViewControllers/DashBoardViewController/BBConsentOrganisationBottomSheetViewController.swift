@@ -91,6 +91,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
     @IBOutlet weak var noDataAgreementsLbl: UILabel!
     
     @IBOutlet weak var dimmedView: UIView!
+    private var activityIndicator: UIActivityIndicatorView!
     
     var organisationId = ""
     var isNeedToRefresh = false
@@ -113,6 +114,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
         setupViews()
         setupInitialState()
         self.noDataAgreementsLbl.isHidden = true
+        setupLoader()
         tableView.delegate = self
         tableView.dataSource = self
         parentView.layer.cornerRadius = 15
@@ -136,6 +138,18 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animatePresentation()
+    }
+    
+    private func setupLoader() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor)
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -297,8 +311,18 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
     }
     
     func callRecordsApi() {
+        DispatchQueue.main.async {
+            self.tableView.isHidden = true
+            self.activityIndicator.startAnimating()
+        }
+        
         let url = baseUrl + "/service/individual/record/consent-record?offset=0&limit=500"
         self.api.makeAPICall(urlString: url, method:.get) { status, result in
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+            }
+            
             if status {
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
@@ -306,9 +330,16 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
                     debugPrint("### Records:\(String(describing: model))")
                     self.consentRecordsObj = model
                     DispatchQueue.main.async {
+                        self.tableView.isHidden = false
                         self.tableView.reloadData()
                     }
                     self.CheckAndCreateRecordForContractType()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.tableView.isHidden = false
                 }
             }
         }
