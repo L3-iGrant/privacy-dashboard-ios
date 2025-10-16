@@ -1508,10 +1508,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KK4-X6-VTa">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKc-Sr-KtP">
                                 <rect key="frame" x="0.0" y="252" width="393" height="600"/>
                                 <subviews>
@@ -1574,16 +1570,13 @@
                         <viewLayoutGuide key="safeArea" id="3Um-Vs-jSd"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3Um-Vs-jSd" firstAttribute="trailing" secondItem="KK4-X6-VTa" secondAttribute="trailing" id="FDm-Zd-Iv3"/>
                             <constraint firstItem="3Um-Vs-jSd" firstAttribute="trailing" secondItem="fKc-Sr-KtP" secondAttribute="trailing" id="Hg0-AK-9Kv"/>
                             <constraint firstAttribute="bottom" secondItem="fKc-Sr-KtP" secondAttribute="bottom" id="Rx1-ne-scW"/>
-                            <constraint firstItem="KK4-X6-VTa" firstAttribute="top" secondItem="vwt-z6-h3s" secondAttribute="top" id="hea-dX-kXT"/>
                             <constraint firstItem="fKc-Sr-KtP" firstAttribute="leading" secondItem="3Um-Vs-jSd" secondAttribute="leading" id="iIi-b0-KS2"/>
-                            <constraint firstItem="KK4-X6-VTa" firstAttribute="leading" secondItem="3Um-Vs-jSd" secondAttribute="leading" id="lXf-up-YA8"/>
-                            <constraint firstItem="3Um-Vs-jSd" firstAttribute="bottom" secondItem="KK4-X6-VTa" secondAttribute="bottom" id="tQ7-rQ-val"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="parentView" destination="fKc-Sr-KtP" id="WhI-J4-xQF"/>
                         <outlet property="parentViewHeight" destination="zEP-rY-8Vk" id="8TX-Fa-aSl"/>
                         <outlet property="tableView" destination="QZv-wh-NzV" id="qiB-03-ZIq"/>
                     </connections>
@@ -2264,19 +2257,19 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
