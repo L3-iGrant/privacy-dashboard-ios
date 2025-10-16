@@ -183,6 +183,7 @@ public class PrivacyDashboard {
             dataAgreementVC.dataAgreementDic = [dataAgreementDic]
             let navVC = UINavigationController.init(rootViewController: dataAgreementVC)
             navVC.modalPresentationStyle = .overFullScreen
+            navVC.modalTransitionStyle = .crossDissolve
             UIApplication.topViewController()?.present(navVC, animated: true, completion: nil)
         } else if viewMode == .fullScreen {
             let frameworkBundle = Bundle(for: BBConsentOrganisationViewController.self)

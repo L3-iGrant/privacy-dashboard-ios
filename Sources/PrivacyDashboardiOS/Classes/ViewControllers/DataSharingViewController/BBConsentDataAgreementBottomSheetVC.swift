@@ -10,10 +10,10 @@ import UIKit
 
 class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var parentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var parentView: UIView!
+    
     var dataAgreement: [PurposeConsentWrapperV2]?
     var purposeSectionDic = [String:Any]()
     var policySectionDict = [String:Any]()
@@ -24,6 +24,8 @@ class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        setupInitialState()
         tableView.delegate = self
         tableView.dataSource = self
         do {
@@ -46,6 +48,40 @@ class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableV
         //let sheetHeight = screenHeight * 0.75
         let sheetHeight = screenHeight * 0.85
         parentViewHeight.constant = sheetHeight
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animatePresentation()
+    }
+    
+    private func setupViews() {
+        self.view.backgroundColor = UIColor.clear
+        let dimmingView = UIView()
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        dimmingView.frame = self.view.bounds
+        dimmingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        dimmingView.alpha = 0
+        dimmingView.tag = 999
+        self.view.insertSubview(dimmingView, at: 0)
+        
+    }
+    
+    private func setupInitialState() {
+        let screenHeight = UIScreen.main.bounds.height
+        parentView.transform = CGAffineTransform(translationX: 0, y: screenHeight)
+    }
+    
+    private func animatePresentation() {
+        UIView.animate(withDuration: 0.2) {
+            if let dimmingView = self.view.viewWithTag(999) {
+                dimmingView.alpha = 1
+            }
+        }
+        
+        UIView.animate(withDuration: 0.3, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseOut) {
+            self.parentView.transform = .identity
+        }
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
