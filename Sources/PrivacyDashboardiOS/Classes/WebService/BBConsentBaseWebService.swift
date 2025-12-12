@@ -351,6 +351,7 @@ extension BBConsentBaseWebService {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
+        case delete = "DELETE"
     }
     
     func makeAPICall(urlString: String, parameters: [String: Any] = [:], headers: [String: String] = [:], method: ApiType, completion:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
