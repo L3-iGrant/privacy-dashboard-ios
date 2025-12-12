@@ -224,6 +224,21 @@ public class PrivacyDashboard {
         }
     }
     
+    public static func deleteAnIndividual(individualId: String, completionBlock: @escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
+        
+        BBConsentBaseWebService.shared.makeAPICall(
+            urlString: Constant.URLStrings.readIndividual + individualId,
+            parameters: [:],
+            method: .delete
+        ) { success, resultVal in
+            if success {
+                completionBlock(true, resultVal)
+            } else {
+                completionBlock(false, resultVal)
+            }
+        }
+    }
+    
     public static func readAnIndividual(individualId: String,  completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
         BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.readIndividual + individualId, parameters: [:], method: .get) { success, resultVal in
             if success {
