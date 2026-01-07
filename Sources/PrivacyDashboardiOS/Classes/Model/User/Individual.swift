@@ -18,12 +18,12 @@ class IndividualRecord: Codable {
 
 // MARK: - Individual
 class Individual: Codable {
-    var id, externalID, externalIDType, identityProviderID: String?
+    var id, externalId, externalIDType, identityProviderID: String?
     var name, iamID, email, phone, pushNotificationToken, deviceType: String?
 
     init(id: String?, externalID: String?, externalIDType: String?, identityProviderID: String?, name: String?, iamID: String?, email: String?, phone: String?, pushNotificationToken: String?, deviceType: String?) {
         self.id = id
-        self.externalID = externalID
+        self.externalId = externalID
         self.externalIDType = externalIDType
         self.identityProviderID = identityProviderID
         self.name = name
