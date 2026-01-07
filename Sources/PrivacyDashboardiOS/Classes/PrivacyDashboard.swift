@@ -205,8 +205,8 @@ public class PrivacyDashboard {
     }
     
     // MARK: - 'Individual' related api calls
-    public static func createAnIndividual(name: String?, email: String?, phone:String?, pushNotificationToken: String?, deviceType: String?, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        let individual = Individual(id: nil, externalID: nil, externalIDType: nil, identityProviderID: nil, name: name, iamID: nil, email: email, phone: phone, pushNotificationToken: pushNotificationToken, deviceType: deviceType)
+    public static func createAnIndividual(name: String?, email: String?, phone:String?, pushNotificationToken: String?, deviceType: String?, externalID: String?, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
+        let individual = Individual(id: nil, externalID: externalID, externalIDType: nil, identityProviderID: nil, name: name, iamID: nil, email: email, phone: phone, pushNotificationToken: pushNotificationToken, deviceType: deviceType)
         let record = IndividualRecord(individual: individual)
         let data = try! JSONEncoder.init().encode(record)
         let dictionary = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
@@ -268,8 +268,22 @@ public class PrivacyDashboard {
         }
     }
     
-    public static func fetchAllIndividuals(completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
-        BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchAllIndividuals, parameters: [:] ,method: .get) { success, resultVal in
+    public static func fetchAllIndividuals(externalIndividualId: String?, completionBlock:@escaping (_ success: Bool, _ resultVal: [String: Any]) -> Void) {
+        guard var components = URLComponents(string: Constant.URLStrings.fetchAllIndividuals) else {
+            completionBlock(false, [:])
+            return
+        }
+        
+        components.queryItems = [
+            URLQueryItem(name: "externalIndividualId", value: externalIndividualId ?? "")
+        ]
+        
+        guard let finalURL = components.url?.absoluteString else {
+            completionBlock(false, [:])
+            return
+        }
+        let url = externalIndividualId?.isEmpty == false ? finalURL : Constant.URLStrings.fetchAllIndividuals
+        BBConsentBaseWebService.shared.makeAPICall(urlString: url, parameters: [:] ,method: .get) { success, resultVal in
             if success {
                 debugPrint(resultVal)
                 completionBlock(true, resultVal)
@@ -279,4 +293,5 @@ public class PrivacyDashboard {
             }
         }
     }
+    
 }
