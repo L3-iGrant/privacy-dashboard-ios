@@ -1,0 +1,100 @@
+
+/* General */
+"bb_consent_cancel" = "Cancelar";
+"bb_consent_general_more" = "Más";
+
+/* Dashboard */
+"bb_consent_dashboard_overview" = "Resumen";
+"bb_consent_dashboard_usage_purpose" = "Propósitos de uso";
+"bb_consent_dashboard_data_agreements" = "ACUERDOS DE DATOS";
+"bb_consent_dashboard_disallow" = "No permitir";
+"bb_consent_dashboard_allow" = "Allow : %1$d of %2$d";
+"bb_consent_dashboard_read_less" = "Leer menos";
+"bb_consent_dashboard_read_more" = "Leer más";
+"bb_consent_dashboard_empty_message" = "No hay acuerdos de datos activos disponibles.";
+
+/* Data attribute */
+"bb_consent_data_attribute_allow" = "Permitir";
+"bb_consent_data_attribute_my_data_consents" = "Mis consentimientos de datos";
+"bb_consent_data_attribute_data_attributes" = "ATRIBUTOS DE DATOS";
+"bb_consent_data_attribute_read_policy" = "Leer política";
+
+/* Webview */
+"bb_consent_web_view_privacy_policy" = "Política de privacidad";
+"bb_consent_web_view_policy" = "";
+
+/* Consent history */
+"bb_consent_history_consent_history" = "Historial de consentimiento";
+"bb_consent_history_empty_consent_history" = "No hay historial disponible";
+
+/* Data attrribute detail */
+"bb_consent_data_attribute_detail_ask_me" = "Preguntarme";
+"bb_consent_data_attribute_detail_allow_consent_rule" = "Si eliges \"Permitir\", das tu consentimiento para
+el uso permanente de tus datos personales para
+cualquier análisis o uso por parte de terceros más
+allá de los fines para los que te registraste.";
+"bb_consent_data_attribute_detail_disallow_consent_rule" = "Si eliges \"No permitir\", desactivarás el uso de
+tus datos personales para cualquier análisis o uso
+por parte de terceros más allá de los fines para los
+que te registraste."
+"bb_consent_data_attribute_detail_askme_consent_rule" = "Si eliges \"Preguntarme\", das tu consentimiento
+para el uso de tus datos durante el periodo
+seleccionado. Cuando el periodo expire, recibirás
+una notificación en tiempo real solicitando tu
+consentimiento cuando el proveedor de datos esté
+utilizando tus datos."
+"bb_consent_data_attribute_detail_consent" = "Consentimiento";
+"bb_consent_data_attribute_detail_days_with_count" = "%1$d Días";
+
+/* Error */
+"bb_consent_error_internet" = "Network not available.";
+"bb_consent_error_unexpected" = "Unexpected error, Please try again.";
+
+/* User request */
+"bb_consent_user_request_new_request" = "Nueva solicitud";
+"bb_consent_user_request_user_request" = "Solicitudes de usuario";
+"bb_consent_user_request_download_data" = "Descargar datos";
+"bb_consent_user_request_forget_me" = "Olvidarme";
+"bb_consent_user_request_cancel_request" = "Cancelar solicitud";
+"bb_consent_user_request_request_initiated" = "Solicitud iniciada";
+"bb_consent_user_request_request_acknowledged" = "Solicitud reconocida";
+"bb_consent_user_request_request_processed" = "Solicitud procesada";
+"bb_consent_user_request_confirmation" = "Confirmación";
+"bb_consent_user_request_confirmation_message" = "Se enviará una nueva solicitud para %1$s a %2$s";
+"bb_consent_user_request_data_delete" = "eliminación de datos";
+"bb_consent_user_request_confirm" = "Confirmar";
+"bb_consent_user_request_request_cancelled" = "Solicitud cancelada con éxito.";
+"bb_consent_user_request_delete_data" = "Eliminar datos";
+
+/* Data sharing UI */
+"bb_consent_data_sharing_main_desc" = "%1$s wants to access the following data from %2$s for %3$s";
+"bb_consent_data_sharing_sensitive_info_see_data_agreement_details_and_terms_of_services" = "Es posible que estés compartiendo información
+sensible con este sitio o aplicación. Consulta los
+detalles del Acuerdo de Datos y los Términos de
+Servicio";
+"bb_consent_data_sharing_make_sure_that_you_trust" = "Asegúrate de confiar en %1$s";
+"bb_consent_data_sharing_by_authrizing_text" = "Al hacer clic en autorizar, la aplicación %1$s
+podrá leer los siguientes atributos de datos";
+"bb_consent_data_sharing_authorize" = "Autorizar";
+"bb_consent_data_sharing_cancel" = "Cancelar";
+
+/* Data Agreement Policy */
+"bb_consent_data_agreement_policy_data_agreement" = "Acuerdo de datos";
+"bb_consent_data_agreement_policy_purpose" = "Propósito";
+"bb_consent_data_agreement_policy_purpose_description" = "Descripción del propósito";
+"bb_consent_data_agreement_policy_lawful_basis_of_processing" = "Base legal del procesamiento";
+"bb_consent_data_agreement_policy_policy_url" = "URL de la política";
+"bb_consent_data_agreement_policy_jurisdiction" = "Jurisdicción";
+"bb_consent_data_agreement_policy_third_party_disclosure" = "Divulgación a terceros";
+"bb_consent_data_agreement_policy_industry_scope" = "Alcance de la industria";
+"bb_consent_data_agreement_policy_geographic_restriction" = "Restricción geográfica";
+"bb_consent_data_agreement_policy_retention_period" = "Periodo de retención";
+"bb_consent_data_agreement_policy_storage_location" = "Ubicación de almacenamiento";
+"bb_consent_data_agreement_policy_dpia_date" = "Fecha de EIPD (DPIA)";
+"bb_consent_data_agreement_policy_dpia_summary" = "Resumen de EIPD (DPIA)";
+"bb_consent_data_agreement_policy_version" = "Versión";
+"bb_consent_data_agreement_years" = "<year> years";
+
+"privacy_dashboard_user_request_download_data_status" = "Estado de solicitud de descarga de datos";
+"privacy_dashboard_user_request_delete_data_status" = "Estado de solicitud de eliminación de datos";
+"privacy_dashboard_data_attribute_disallow_all" = "No permitir nada";
