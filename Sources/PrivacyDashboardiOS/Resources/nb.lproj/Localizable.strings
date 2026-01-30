@@ -1,0 +1,102 @@
+/* 
+  Localizable.strings
+  PrivacyDashboardiOS
+
+  Created by iGrant on 30/01/26.
+  
+*/
+
+
+/* General */
+"bb_consent_cancel" = "Avbryt";
+"bb_consent_general_more" = "Mer";
+
+/* Dashboard */
+"bb_consent_dashboard_overview" = "Oversikt";
+"bb_consent_dashboard_usage_purpose" = "Bruksformål";
+"bb_consent_dashboard_data_agreements" = "DATAAVTALER";
+"bb_consent_dashboard_disallow" = "Ikke tillat";
+"bb_consent_dashboard_allow" = "Allow : %1$d of %2$d";
+"bb_consent_dashboard_read_less" = "Vis mindre";
+"bb_consent_dashboard_read_more" = "Les mer";
+"bb_consent_dashboard_empty_message" = "Ingen aktive dataavtaler tilgjengelig.";
+
+/* Data attribute */
+"bb_consent_data_attribute_allow" = "Tillat";
+"bb_consent_data_attribute_my_data_consents" = "Mine datasamtykker";
+"bb_consent_data_attribute_data_attributes" = "DATAATRIBUTTER";
+"bb_consent_data_attribute_read_policy" = "Les personvernerklæring";
+
+/* Webview */
+"bb_consent_web_view_privacy_policy" = "Personvernerklæring";
+"bb_consent_web_view_policy" = "";
+
+/* Consent history */
+"bb_consent_history_consent_history" = "Samtykkehistorikk";
+"bb_consent_history_empty_consent_history" = "Ingen historikk tilgjengelig";
+
+/* Data attrribute detail */
+"bb_consent_data_attribute_detail_ask_me" = "Spør meg";
+"bb_consent_data_attribute_detail_allow_consent_rule" = "Hvis du velger \"Tillat\", samtykker du til permanent
+bruk av dine personopplysninger for enhver
+analyse- eller tredjepartsbruk utover formålene du
+har meldt deg på.";
+"bb_consent_data_attribute_detail_disallow_consent_rule" = "Hvis du velger \"Ikke tillat\", deaktiverer du bruken av
+dine personopplysninger for enhver analyse- eller
+tredjepartsbruk utover formålene du har meldt deg på.";
+"bb_consent_data_attribute_detail_askme_consent_rule" = "Hvis du velger \"Spør meg\", samtykker du til bruk av
+dine data for den valgte perioden. Når tidsperioden
+utløper, vil du bli varslet i sanntid med forespørsel om
+samtykke når dataleverandøren bruker dine data.";
+"bb_consent_data_attribute_detail_consent" = "Samtykke";
+"bb_consent_data_attribute_detail_days_with_count" = "%1$d dager";
+
+/* Error */
+"bb_consent_error_internet" = "Nettverk ikke tilgjengelig.";
+"bb_consent_error_unexpected" = "Uventet feil. Vennligst prøv igjen.";
+
+/* User request */
+"bb_consent_user_request_new_request" = "Ny forespørsel";
+"bb_consent_user_request_user_request" = "Brukerforespørsler";
+"bb_consent_user_request_download_data" = "Last ned data";
+"bb_consent_user_request_forget_me" = "Glem meg";
+"bb_consent_user_request_cancel_request" = "Avbryt forespørsel";
+"bb_consent_user_request_request_initiated" = "Forespørsel startet";
+"bb_consent_user_request_request_acknowledged" = "Forespørsel mottatt";
+"bb_consent_user_request_request_processed" = "Forespørsel behandlet";
+"bb_consent_user_request_confirmation" = "Bekreftelse";
+"bb_consent_user_request_confirmation_message" = "En ny forespørsel om %1$s vil bli sendt til %2$s";
+"bb_consent_user_request_data_delete" = "datasletting";
+"bb_consent_user_request_confirm" = "Bekreft";
+"bb_consent_user_request_request_cancelled" = "Forespørselen ble avbrutt.";
+"bb_consent_user_request_delete_data" = "Slett data";
+
+/* Data sharing UI */
+"bb_consent_data_sharing_main_desc" = "%1$s wants to access the following data from %2$s for %3$s";
+"bb_consent_data_sharing_sensitive_info_see_data_agreement_details_and_terms_of_services" = "You may be sharing sensitive info with this site or app. See the Data Agreement details and Terms of Services";
+"bb_consent_data_sharing_make_sure_that_you_trust" = "Forsikre deg om at du stoler på %1$s";
+"bb_consent_data_sharing_by_authrizing_text" = "Ved å klikke på godkjenn, vil appen %1$s kunne lese
+følgende dataattributter";
+"bb_consent_data_sharing_authorize" = "Godkjenn";
+"bb_consent_data_sharing_cancel" = "Avbryt";
+
+/* Data Agreement Policy */
+"bb_consent_data_agreement_policy_data_agreement" = "Dataavtale";
+"bb_consent_data_agreement_policy_purpose" = "Formål";
+"bb_consent_data_agreement_policy_purpose_description" = "Beskrivelse av formål";
+"bb_consent_data_agreement_policy_lawful_basis_of_processing" = "Rettslig grunnlag for behandling";
+"bb_consent_data_agreement_policy_policy_url" = "URL til personvernerklæring";
+"bb_consent_data_agreement_policy_jurisdiction" = "Jurisdiksjon";
+"bb_consent_data_agreement_policy_third_party_disclosure" = "Utlevering til tredjepart";
+"bb_consent_data_agreement_policy_industry_scope" = "Bransjeomfang";
+"bb_consent_data_agreement_policy_geographic_restriction" = "Geografisk begrensning";
+"bb_consent_data_agreement_policy_retention_period" = "Lagringstid";
+"bb_consent_data_agreement_policy_storage_location" = "Lagringssted";
+"bb_consent_data_agreement_policy_dpia_date" = "DPIA-dato";
+"bb_consent_data_agreement_policy_dpia_summary" = "DPIA-sammendrag";
+"bb_consent_data_agreement_policy_version" = "Versjon";
+"bb_consent_data_agreement_years" = "<year> years";
+
+"privacy_dashboard_user_request_download_data_status" = "Status for forespørsel om datanedlasting";
+"privacy_dashboard_user_request_delete_data_status" = "Status for forespørsel om datasletting";
+"privacy_dashboard_data_attribute_disallow_all" = "Ikke tillat noen";

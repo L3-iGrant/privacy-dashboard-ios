@@ -79,3 +79,7 @@
 "bb_consent_data_agreement_policy_dpia_summary"                                           = "DPIA Sammanfattning";
 "bb_consent_data_agreement_policy_version"                                                = "Version";
 "bb_consent_data_agreement_years"                                                         = "<year> years";
+
+"privacy_dashboard_user_request_download_data_status" = "Status för begäran om datanedladdning";
+"privacy_dashboard_user_request_delete_data_status" = "Status för begäran om dataradering";
+"privacy_dashboard_data_attribute_disallow_all" = "Disallow All";

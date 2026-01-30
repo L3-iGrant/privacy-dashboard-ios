@@ -545,23 +545,19 @@ extension String {
     
     var localized: String {
         let languageCode = BBConsentPrivacyDashboardiOS.shared.languageCode
-        
-        if let resourceBundlePath = Bundle(for: PrivacyDashboard.self).path(forResource: "PrivacyDashboardiOS", ofType: "bundle"),
-           let resourceBundle = Bundle(path: resourceBundlePath),
-           let languageBundlePath = resourceBundle.path(forResource: languageCode, ofType: "lproj"),
-           let languageBundle = Bundle(path: languageBundlePath) {
-            return NSLocalizedString(self, tableName: nil, bundle: Bundle.module, value: "", comment: "")
-        } else {
-            if let resourceBundlePath = Bundle(for: PrivacyDashboard.self).path(forResource: "PrivacyDashboardiOS", ofType: "bundle"),
-               let resourceBundle = Bundle(path: resourceBundlePath),
-               let englishBundlePath = resourceBundle.path(forResource: "en", ofType: "lproj"),
-               let englishBundle = Bundle(path: englishBundlePath) {
-                return NSLocalizedString(self, tableName: nil, bundle: Bundle.module, value: "", comment: "")
-            }
+
+        if let languageBundlePath = Bundle.module.path(forResource: languageCode, ofType: "lproj"),
+               let languageBundle = Bundle(path: languageBundlePath) {
+
+            return NSLocalizedString(self, bundle: languageBundle, comment: "")
         }
-        
-       // let path = Bundle(for: PrivacyDashboard.self).path(forResource: "PrivacyDashboardiOS", ofType: "bundle")!
-        //let bundle = Bundle(path: path) ?? Bundle.main
-        return NSLocalizedString(self, tableName: nil, bundle: Bundle.module, value: "", comment: "")
+        // fallback to English
+        if let englishPath = Bundle.module.path(forResource: "en", ofType: "lproj"),
+               let englishBundle = Bundle(path: englishPath) {
+
+            return NSLocalizedString(self, bundle: englishBundle, comment: "")
+        }
+
+        return NSLocalizedString(self, bundle: .module, comment: "")
     }
 }

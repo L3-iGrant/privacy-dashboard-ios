@@ -84,7 +84,7 @@ struct Constant {
         static let areYouSureYouWantToDisAllow = "Are you sure you want to disallow?"
         static let disallow = "bb_consent_dashboard_disallow"
         static let areYouWantToDisallowAll = "Are you sure you want to disallow all ?"
-        static let disallowAll = "Disallow All"
+        static let disallowAll = "privacy_dashboard_data_attribute_disallow_all"
         static let invalidURL = "Invalid URL"
         
         static let cancelRequest = "bb_consent_user_request_cancel_request"
@@ -153,8 +153,8 @@ struct Constant {
         static let requestInitiated = "bb_consent_user_request_request_initiated"
         static let requestAcknowledged = "bb_consent_user_request_request_acknowledged"
         static let requestProcessed = "bb_consent_user_request_request_processed"
-        static let downloadDataRequestStatus = "Download Data Request Status"
-        static let deleteDataRequestStatus = "Delete Data Request Status"
+        static let downloadDataRequestStatus = "privacy_dashboard_user_request_download_data_status"
+        static let deleteDataRequestStatus = "privacy_dashboard_user_request_delete_data_status"
         static let dataAgreements = "bb_consent_dashboard_data_agreements"
         static let dataAttributes = "bb_consent_data_attribute_data_attributes"
     }
