@@ -36,13 +36,13 @@ allá de los fines para los que te registraste.";
 "bb_consent_data_attribute_detail_disallow_consent_rule" = "Si eliges \"No permitir\", desactivarás el uso de
 tus datos personales para cualquier análisis o uso
 por parte de terceros más allá de los fines para los
-que te registraste."
+que te registraste.";
 "bb_consent_data_attribute_detail_askme_consent_rule" = "Si eliges \"Preguntarme\", das tu consentimiento
 para el uso de tus datos durante el periodo
 seleccionado. Cuando el periodo expire, recibirás
 una notificación en tiempo real solicitando tu
 consentimiento cuando el proveedor de datos esté
-utilizando tus datos."
+utilizando tus datos.";
 "bb_consent_data_attribute_detail_consent" = "Consentimiento";
 "bb_consent_data_attribute_detail_days_with_count" = "%1$d Días";
 
