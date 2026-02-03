@@ -51,6 +51,7 @@ class BBConsentAttributesBottomSheetViewController: BBConsentBaseViewController 
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(baseViewTapped))
         tapGesture.delegate = self
+        dataAttributeLabel.text = "bb_consent_data_attribute_data_attributes".localized
         self.view.addGestureRecognizer(tapGesture)
     }
     

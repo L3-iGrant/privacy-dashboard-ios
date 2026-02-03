@@ -128,6 +128,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
             self.callRecordsApi()
         }
         callOrganisationApi()
+        dataAgreementsLabel.text = "bb_consent_dashboard_data_agreements".localized
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(baseViewTapped))
         tapGesture.delegate = self
         self.view.addGestureRecognizer(tapGesture)
