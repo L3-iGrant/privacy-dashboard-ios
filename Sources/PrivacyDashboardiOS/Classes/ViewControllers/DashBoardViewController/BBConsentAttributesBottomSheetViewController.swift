@@ -28,6 +28,8 @@ class BBConsentAttributesBottomSheetViewController: BBConsentBaseViewController 
     
     @IBOutlet weak var readPolicyButton: UIButton!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
     var overViewCollpased = true
     var dataAgreementsModel : DataAgreementsModel?
     var organization : OrganisationModel?
@@ -48,7 +50,7 @@ class BBConsentAttributesBottomSheetViewController: BBConsentBaseViewController 
         addRefershNotification()
         callConsentListApi()
         setPolicyButton()
-        
+        closeButton.applyBottomSheetCloseStyle()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(baseViewTapped))
         tapGesture.delegate = self
         dataAttributeLabel.text = "bb_consent_data_attribute_data_attributes".localized

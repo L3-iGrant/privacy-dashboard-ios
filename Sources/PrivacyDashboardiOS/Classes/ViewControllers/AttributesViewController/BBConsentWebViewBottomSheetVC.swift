@@ -16,10 +16,13 @@ final class BBConsentWebViewBottomSheetVC: BBConsentBaseViewController, WKNaviga
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
     var urlString  = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.applyBottomSheetCloseStyle()
         webView.navigationDelegate = self
         webView.uiDelegate = self
         let backButton = UIButton(type: UIButton.ButtonType.custom)
