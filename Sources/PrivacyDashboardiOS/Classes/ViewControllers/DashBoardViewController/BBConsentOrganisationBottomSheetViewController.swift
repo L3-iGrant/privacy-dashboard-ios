@@ -115,6 +115,8 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
         setupInitialState()
         self.noDataAgreementsLbl.isHidden = true
         setupLoader()
+        closeButton.applyBottomSheetCloseStyle()
+        moreButton.applyBottomSheetCloseStyle(imageName: "ellipsis")
         tableView.delegate = self
         tableView.dataSource = self
         parentView.layer.cornerRadius = 15

@@ -16,6 +16,11 @@ class BBConsentHistoryBottomSheetViewController: BBConsentBaseViewController {
     
     @IBOutlet weak var parentViewHeight: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
     var consentHistoryDetails: ConsentHistoryData?
     var histories: [ConsentHistory]?
     var orgId: String?
@@ -25,11 +30,13 @@ class BBConsentHistoryBottomSheetViewController: BBConsentBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.applyBottomSheetCloseStyle()
         historyListTable.dataSource = self
         historyListTable.delegate = self
         callHistoryListApi(orgID: self.orgId ?? "")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(baseViewTapped))
         tapGesture.delegate = self
+        titleLabel.text = "bb_consent_history_consent_history".localized.capitalized
         self.view.addGestureRecognizer(tapGesture)
     }
     

@@ -14,6 +14,8 @@ class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableV
     @IBOutlet weak var parentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var parentView: UIView!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
     var dataAgreement: [PurposeConsentWrapperV2]?
     var purposeSectionDic = [String:Any]()
     var policySectionDict = [String:Any]()
@@ -25,6 +27,7 @@ class BBConsentDataAgreementBottomSheetVC: BBConsentBaseViewController, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        closeButton.applyBottomSheetCloseStyle()
         setupInitialState()
         tableView.delegate = self
         tableView.dataSource = self
