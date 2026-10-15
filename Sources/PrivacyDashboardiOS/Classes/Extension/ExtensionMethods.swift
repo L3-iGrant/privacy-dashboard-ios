@@ -174,9 +174,9 @@ extension String {
 extension UIFont {
     static func printFontNames() {
         for familyName in UIFont.familyNames {
-            debugPrint("Family name: \(familyName)")
+            BBConsentLog.debug("Family name: \(familyName)")
             for fontName in UIFont.fontNames(forFamilyName: familyName) {
-                debugPrint("Font name: \(fontName)")
+                BBConsentLog.debug("Font name: \(fontName)")
             }
         }
     }

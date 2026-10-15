@@ -52,13 +52,6 @@ class OrganisationWebServiceManager: WebServiceTaskManager {
     var isLoadMore = false
     var baseUrl = BBConsentPrivacyDashboardiOS.shared.baseUrl
     
-    func refreshToken(){
-        let service = BBConsentBaseWebService()
-        service.delegate = self
-        service.serviceType = .ReCallLogin
-        service.refreshToken()
-    }
-    
     func getNonAddedOrganisationList(){
         serviceType = .NonAddedOrgList
         DispatchQueue.global().async {
@@ -249,49 +242,12 @@ class OrganisationWebServiceManager: WebServiceTaskManager {
 //        https://api.igrant.dev/v1/organizations/5b2137c93fee23000194d8ea/users/5b2135a23fee23000194d8e3/consents/5b3dca30c8c87f0001322c48/purposes/5b3dc983c8c87f0001322c45/status
     
     
-    func reCallFailedApi(){
-        switch(serviceType) {
-        case .NonAddedOrgList:getNonAddedOrganisationList()
-        case .AddNewOrg: consentNewOrganisation(orgId: self.organisationId, subKey: self.subscriptionKey)
-        case .OrgDetails:getOrganisationDetails(orgId: self.organisationId)
-        case .Organization: getOrganization(orgId: self.organisationId)
-        case .GetDataAgreementRecords: getAllDataAgreementRecords(orgId: self.organisationId)
-        case .RemoveOrg:removeOrganisation(orgId: self.organisationId)
-        case .AllowAlConsent:allowAllConsentOfOrganisation(orgId: self.organisationId)
-        case .UpdateConsent: break
-//        updateConsent(orgId: organisationId, consentID: consentId, valuesDict: consentDictionary)
-        case .PurposeList : break
-        case .UpdatePurpose : break
-        case .requestDownloadData : requestDownloadData(orgId: self.organisationId)
-        case .requestForgetMe : requestForgetMe(orgId: self.organisationId)
-        case .getForgetMeStatus : getForgetMeStatus(orgId: self.organisationId)
-        case .getDownloadDataStatus : getDownloadDataStatus(orgId: self.organisationId)
-        case .cancelRequest : cancelRequest(orgId: self.organisationId, requestId: self.requestId, type: self.requestType)
-        case .getRequestedStatus : getRequestedStatus(orgId: self.organisationId)
-        case .acceptEula : acceptEulaConsent(orgId: self.organisationId, parameters: self.consentDictionary)
-        case .CreateDataAgreementRecord: break
-        }
-    }
-    
-
-
 }
 
 
 extension OrganisationWebServiceManager : BaseServiceDelegates {
     func didSuccessfullyReceiveData(response:RestResponse?){
-        let responseData = response!.response!
-        if response?.serviceType == .ReCallLogin{
-            if let accessToken = responseData["access_token"].string{
-                UserInfo.currentUser()?.token = accessToken
-            }
-            if let refreshToken = responseData["refresh_token"].string{
-                UserInfo.currentUser()?.token = refreshToken
-            }
-            UserInfo.currentUser()?.save()
-            self.reCallFailedApi()
-        }else{
-            switch(serviceType) {
+        switch(serviceType) {
             case .NonAddedOrgList:handleNonAddedOrgsResponse(response: response)
             case .AddNewOrg: handleAddNewOrgResponse(response: response)
             case .OrgDetails: handleOrgDetailsResponse(response: response)
@@ -311,17 +267,11 @@ extension OrganisationWebServiceManager : BaseServiceDelegates {
             case .getRequestedStatus : handleRequestedStatusHistory(response: response)
             case .acceptEula : handleAcceptEulaConsentResponse(response: response)
             case .CreateDataAgreementRecord: handleOrganizationResponse(response: response)
-            }
         }
     }
     
     func didFailedToReceiveData(response:RestResponse?){
-        if response?.message == Constant.AppSetupConstant.KTokenExpired{
-            NotificationCenter.default.post(name: Notification.Name("ResetToLogin"), object: nil)
-            //self.refreshToken()
-        }else{
-            self.managerDelegate?.didFinishTask(from: self, response: (data: response, error: response?.message))
-        }
+        self.managerDelegate?.didFinishTask(from: self, response: (data: response, error: response?.message))
     }
 
 }
@@ -374,7 +324,7 @@ extension OrganisationWebServiceManager {
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(responseData) {
                 if let json = String(data: encoded, encoding: .utf8) {
-                    print(json)
+                    BBConsentLog.debug("\(json)")
                 }
                 let decoder = JSONDecoder()
                 if let decoded = try? decoder.decode(DataAgreementRecords.self, from: encoded) {

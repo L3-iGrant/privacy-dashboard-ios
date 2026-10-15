@@ -38,7 +38,7 @@ class BBConsentAskMeSliderTableViewCell: UITableViewCell {
     }
     
     @IBAction func sliderDidEndSliding() {
-        debugPrint("End sliding")
+        BBConsentLog.debug("End sliding")
         self.delegate?.updatedSliderValue(days: slidercurrentValue, indexPath: index)
     }
 }

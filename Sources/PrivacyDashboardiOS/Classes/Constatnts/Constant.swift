@@ -31,9 +31,9 @@ struct Constant {
        return Bundle(url: resourcesBundleUrl)
    }
     struct AppSetupConstant {
+        // Older SDK versions stored a user session under this key. Only used to delete it.
         static let KSavingUSerInfoUserDefaultKey = "UserSession"
         static let KAlertTitle = "Alert"
-        static let KTokenExpired = "Invalid token, Authorization failed"
     }
     
     struct ScreenSize {
@@ -41,10 +41,6 @@ struct Constant {
         static let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
         static let SCREEN_MAX_LENGTH = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
         static let SCREEN_MIN_LENGTH = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-    }
-    
-    struct DeviceToken {
-        static let KUserDeviceTokenKey = "UserDeviceToken"
     }
     
     struct Color {
@@ -160,11 +156,12 @@ struct Constant {
     }
     
     struct URLStrings {
-        static let createIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual"
-        static let readIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
-        static let updateIndividual = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/"
-        static let fetchAllIndividuals = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individuals"
-        static let fetchDataAgreementRecord =  BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/record/data-agreement/"
-        static let fetchDataAgreement = BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/data-agreement/"
+        // Computed, so that they use the base URL of the latest configure call.
+        static var createIndividual: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual" }
+        static var readIndividual: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/" }
+        static var updateIndividual: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/" }
+        static var fetchAllIndividuals: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individuals" }
+        static var fetchDataAgreementRecord: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/individual/record/data-agreement/" }
+        static var fetchDataAgreement: String { BBConsentPrivacyDashboardiOS.shared.baseUrl + "/service/data-agreement/" }
     }
 }
