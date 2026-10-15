@@ -50,7 +50,7 @@ class WebViewViewController: BBConsentBaseViewController, WKNavigationDelegate, 
     //Equivalent of webViewDidFinishLoad:
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // self.removeLoadingIndicator()
-        print("didFinish - webView.url: \(String(describing: webView.url?.description))")
+        BBConsentLog.debug("didFinish - webView.url: \(String(describing: webView.url?.description))")
     }
     
     

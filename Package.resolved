@@ -100,6 +100,15 @@
       }
     },
     {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "8648fe649c5d62be38721110f835821906e9242a",
+        "version" : "8.13.0"
+      }
+    },
+    {
       "identity" : "sdstatetableview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/decentralised-dataexchange/SDStateTableView",

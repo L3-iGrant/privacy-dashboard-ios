@@ -30,7 +30,7 @@ class BBConsentDataAgreementVC: UITableViewController {
                 instance = try JSONDecoder().decode(DAPolicy.self, from: jsonData)
             }
         } catch {
-            debugPrint(error)
+            BBConsentLog.debug("\(error)")
         }
         let bundle = Bundle(for: DataAgreementCellV2.self)
         tableView.register(UINib(nibName: "DataAgreementCellV2", bundle: Bundle.module), forCellReuseIdentifier: "DataAgreementCellV2")

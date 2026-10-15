@@ -7,7 +7,6 @@
 
 
 import UIKit
-import Kingfisher
 
 class BBConsentDashboardHeaderCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
@@ -34,25 +33,14 @@ class BBConsentDashboardHeaderCell: UITableViewCell {
     func showData() {
         self.nameLbl.text = self.orgData?.organisation.name
         self.locationLbl.text = self.orgData?.organisation.location
-        let modifier = AnyModifier { request in
-            var r = request
-            r.setValue("Bearer \(UserInfo.currentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
-            if let tokendata = BBConsentKeyChainUtils.load(key: "BBConsentApiKey") {
-                let token = String(data: tokendata, encoding: .utf8) ?? ""
-                r.setValue("ApiKey \(token)", forHTTPHeaderField: "Authorization")
-                r.setValue(BBConsentPrivacyDashboardiOS.shared.userId ?? "", forHTTPHeaderField:  "X-ConsentBB-IndividualId")
-            }
-            return r
-        }
-        
         self.orgImageView.image = UIImage(named: Constant.Images.defaultCoverImage)
         let coverImageUrl = URL(string: (orgData?.organisation.coverImageURL ?? ""))
         let placeholder = UIImage(named: Constant.Images.defaultCoverImage, in: Constant.getResourcesBundle(vc: BBConsentBaseViewController().classForCoder), compatibleWith: nil)
-        self.orgImageView.kf.setImage(with: coverImageUrl, placeholder: placeholder, options: [.requestModifier(modifier)])
+        BBConsentImageLoader.setImage(self.orgImageView, url: coverImageUrl, placeholder: placeholder)
         
         self.logoImageView.image = UIImage(named: Constant.Images.iGrantTick)
         let logoImageUrl = URL(string: (orgData?.organisation.logoImageURL ?? ""))
         let coverImagePlaceholder = UIImage(named: Constant.Images.iGrantTick, in: Constant.getResourcesBundle(vc: BBConsentBaseViewController().classForCoder), compatibleWith: nil)
-        self.logoImageView.kf.setImage(with: logoImageUrl, placeholder: coverImagePlaceholder, options: [.requestModifier(modifier)])
+        BBConsentImageLoader.setImage(self.logoImageView, url: logoImageUrl, placeholder: coverImagePlaceholder)
     }
 }

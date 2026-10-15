@@ -211,7 +211,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(OrganisationModel.self, from: data)
-                    debugPrint("### Organiosation:\(String(describing: model))")
+                    BBConsentLog.debug("### Organiosation:\(String(describing: model))")
                     self.organizationObj = model
                     self.setOverviewText()
                 }
@@ -263,7 +263,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
         actionSheetController.popoverPresentationController?.sourceView = moreButton
         
         present(actionSheetController, animated: true) {
-            debugPrint("#Option menu presented")
+            BBConsentLog.debug("#Option menu presented")
         }
         
     }
@@ -296,7 +296,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(DataAgreementsModel.self, from: data)
-                    debugPrint("### DataAgreements:\(String(describing: model))")
+                    BBConsentLog.debug("### DataAgreements:\(String(describing: model))")
                     if self.dataAgreementIDs ==  nil {
                         self.dataAgreementsObj = model
                     } else {
@@ -330,7 +330,7 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(RecordsModel.self, from: data)
-                    debugPrint("### Records:\(String(describing: model))")
+                    BBConsentLog.debug("### Records:\(String(describing: model))")
                     self.consentRecordsObj = model
                     DispatchQueue.main.async {
                         self.tableView.isHidden = false
@@ -353,10 +353,10 @@ class BBConsentOrganisationBottomSheetViewController: BBConsentBaseViewControlle
         self.api.makeAPICall(urlString: url, method:.post) { status, result in
             if status {
                 let jsonDecoder = JSONDecoder()
-                debugPrint(result["consentRecord"] ?? [:])
+                BBConsentLog.debug("\(result["consentRecord"] ?? [:])")
                 if let data = try? JSONSerialization.data(withJSONObject: result["consentRecord"] ?? [:], options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(ConsentRecordModel.self, from: data)
-                    debugPrint("### ConsentRecordModel:\(String(describing: model))")
+                    BBConsentLog.debug("### ConsentRecordModel:\(String(describing: model))")
                     completion(model)
                 }
             }

@@ -82,7 +82,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(OrganisationModel.self, from: data)
-                    debugPrint("### Organiosation:\(String(describing: model))")
+                    BBConsentLog.debug("### Organiosation:\(String(describing: model))")
                     self.organizationObj = model
                     self.orgTableView.reloadData()
                 }
@@ -98,7 +98,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(DataAgreementsModel.self, from: data)
-                    debugPrint("### DataAgreements:\(String(describing: model))")
+                    BBConsentLog.debug("### DataAgreements:\(String(describing: model))")
                     if self.dataAgreementIDs ==  nil {
                         self.dataAgreementsObj = model
                     } else {
@@ -122,7 +122,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
                 let jsonDecoder = JSONDecoder()
                 if let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(RecordsModel.self, from: data)
-                    debugPrint("### Records:\(String(describing: model))")
+                    BBConsentLog.debug("### Records:\(String(describing: model))")
                     self.consentRecordsObj = model
                     self.orgTableView.reloadData()
                     self.CheckAndCreateRecordForContractType()
@@ -136,10 +136,10 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
         self.api.makeAPICall(urlString: url, method:.post) { status, result in
             if status {
                 let jsonDecoder = JSONDecoder()
-                debugPrint(result["consentRecord"] ?? [:])
+                BBConsentLog.debug("\(result["consentRecord"] ?? [:])")
                 if let data = try? JSONSerialization.data(withJSONObject: result["consentRecord"] ?? [:], options: .prettyPrinted) {
                     let model = try? jsonDecoder.decode(ConsentRecordModel.self, from: data)
-                    debugPrint("### ConsentRecordModel:\(String(describing: model))")
+                    BBConsentLog.debug("### ConsentRecordModel:\(String(describing: model))")
                     completion(model)
                 }
             }
@@ -231,7 +231,7 @@ class BBConsentOrganisationViewController: BBConsentBaseViewController {
         actionSheetController.popoverPresentationController?.sourceView = moreBtn // works for both iPhone & iPad
         
         present(actionSheetController, animated: true) {
-            debugPrint("#Option menu presented")
+            BBConsentLog.debug("#Option menu presented")
         }
     }
     

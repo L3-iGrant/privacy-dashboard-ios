@@ -157,7 +157,7 @@ class BBConsentRequestStatusViewController: BBConsentBaseViewController, UITable
         actionSheetController.popoverPresentationController?.sourceView = newRequestButton // works for both iPhone & iPad
 
         present(actionSheetController, animated: true) {
-            debugPrint("option menu presented")
+            BBConsentLog.debug("option menu presented")
         }
     }
 }

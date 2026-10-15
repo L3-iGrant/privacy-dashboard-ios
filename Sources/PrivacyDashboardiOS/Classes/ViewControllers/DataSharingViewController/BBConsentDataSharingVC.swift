@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Kingfisher
 import UIKit
 
 class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManagerProtocol, UITextViewDelegate {
@@ -65,24 +64,13 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
     
     fileprivate func setLogoImageView() {
         // Our logo image
-        let modifier = AnyModifier { request in
-            var r = request
-            r.setValue("Bearer \(UserInfo.currentUser()?.token ?? "")", forHTTPHeaderField: "Authorization")
-            if let tokendata = BBConsentKeyChainUtils.load(key: "BBConsentApiKey") {
-                let token = String(data: tokendata, encoding: .utf8) ?? ""
-                r.setValue("ApiKey \(token)", forHTTPHeaderField: "Authorization")
-                r.setValue(BBConsentPrivacyDashboardiOS.shared.userId ?? "", forHTTPHeaderField:  "X-ConsentBB-IndividualId")
-            }
-            return r
-        }
-        
         self.betweenLogosImageView.image = UIImage(named: "ic_between_logo", in: Bundle.module, compatibleWith: nil)
         let logoUrlFromOrgData = URL(string: (organizationData?.logoImageURL ?? ""))
         let placeholder = UIImage(named: Constant.Images.iGrantTick, in: Constant.getResourcesBundle(vc: BBConsentBaseViewController().classForCoder), compatibleWith: nil)
         if let logoUrlFromClient = URL(string: theirLogoImageUrl ?? "") {
-            self.thierLogoImageView.kf.setImage(with: logoUrlFromClient, placeholder: placeholder, options: [.requestModifier(modifier)])
+            BBConsentImageLoader.setImage(self.thierLogoImageView, url: logoUrlFromClient, placeholder: placeholder)
         }
-        self.ourLogoImageView.kf.setImage(with: logoUrlFromOrgData, placeholder: placeholder, options: [.requestModifier(modifier)])
+        BBConsentImageLoader.setImage(self.ourLogoImageView, url: logoUrlFromOrgData, placeholder: placeholder)
     }
     
     fileprivate func arrangeFirstLabel() {
@@ -158,12 +146,12 @@ class BBConsentDataSharingVC: BBConsentBaseViewController, WebServiceTaskManager
         self.addLoadingIndicator()
         BBConsentBaseWebService.shared.makeAPICall(urlString: Constant.URLStrings.fetchDataAgreementRecord + (dataAgreementId ?? ""), parameters: [:], method: .post) { success, resultVal in
             if success {
-                debugPrint(resultVal)
+                BBConsentLog.debug("\(resultVal)")
                 self.sendDataBack?(resultVal)
                 self.removeLoadingIndicator()
                 self.dismiss(animated: true)
             } else {
-                debugPrint(resultVal)
+                BBConsentLog.debug("\(resultVal)")
                 self.sendDataBack?(resultVal)
                 self.removeLoadingIndicator()
                 self.dismiss(animated: true)
